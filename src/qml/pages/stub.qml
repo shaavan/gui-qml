@@ -35,7 +35,7 @@ ApplicationWindow {
         ProgressIndicator {
             id: indicator
             Layout.fillWidth: true
-            progress: 0.666
+            progress: nodeModel.verificationProgress
             background: MouseArea {
                 onClicked: indicator.progress = mouseX / width
             }
