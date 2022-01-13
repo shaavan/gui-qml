@@ -4,6 +4,7 @@
 
 import QtQuick 2.15
 import QtQuick.Controls 2.15
+import QtGraphicalEffects 1.15
 
 Switch {
     id: root
@@ -11,7 +12,7 @@ Switch {
         implicitWidth: 45
         implicitHeight: 28
         x: root.leftPadding
-        y: parent.height / 2 - height / 2
+        y: Math.round((parent.height - height) / 2)
         radius: 18
         color: root.checked ? "#F7931A" : "#DDDDDD"
         Rectangle {
@@ -22,6 +23,17 @@ Switch {
             height: 20
             radius: 18
             color: "#ffffff"
+        }
+
+        DropShadow {
+            anchors.fill: indicatorButton
+            horizontalOffset: 0
+            verticalOffset: 5
+            radius: 10.0
+            spread: 0.0
+            samples: 21
+            color: "#00000040"
+            source: indicatorButton
         }
     }
 }
