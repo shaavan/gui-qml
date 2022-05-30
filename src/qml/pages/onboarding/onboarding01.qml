@@ -11,24 +11,39 @@ Page {
     background: null
     Layout.fillWidth: true
     ColumnLayout {
-      anchors.fill: parent
-      anchors.leftMargin: 80
-      anchors.rightMargin: anchors.leftMargin
-      spacing: 0
+        anchors.leftMargin: 80
+        anchors.fill: parent
+        anchors.rightMargin: anchors.leftMargin
+        spacing: 0
 
-      Image {
-        Layout.alignment: Qt.AlignVCenter
-        Layout.topMargin: 50
-        source: "image://images/app"
-        sourceSize.width: 100
-        sourceSize.height: souceSize.width
-      }
+        Image {
+            Layout.alignment: Qt.AlignVCenter
+            Layout.topMargin: 50
+            source: "image://images/app"
+            sourceSize.width: 100
+            sourceSize.height: souceSize.width
+        }
 
-      Header {
-        Layout.fillWidth: true
-        implicitWidth
-      }
+        Header {
+            Layout.fillWidth: true
+            implicitWidth: childrenRect.width
+            bold: true
+            header: qsTr("Bitcoin Core App")
+            headerSize: 36
+            headerMargin: 30
+            description: qsTr("Be part of the Bitcoin network.")
+            descriptionSize: 24
+            descriptionMargin: 10
+            subtext: qsTr("100% open-source & open-design")
+            subtextMargin: 30
+        }
+
+        ContinueButton {
+            Layout.alignment: Qt.AlignVCenter
+            Layout.topMargin: 76
+            text: qsTr("Start")
+            onClicked: swipeView.incrementCurrentIndex()
+        }
 
     }
 }
-// Dummy Change
