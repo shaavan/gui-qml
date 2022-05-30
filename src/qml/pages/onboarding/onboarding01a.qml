@@ -21,5 +21,8 @@ Page {
           header: "About"
           description: qsTr("Bitcoin Core is an open source project. If you find it useful, please contribute.\n This is experimental software.")
       }
+      AboutOptions {
+          Layout.topMargin: 47.5
+      }
     }
 }
