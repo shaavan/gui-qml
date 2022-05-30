@@ -25,6 +25,7 @@ Control {
             Loader {
                 Layout.fillWidth: true
                 Layout.preferredWidth: 0
+                //Probably this Loader shall also be right Aligned.
                 active: root.description.length > 0
                 visible: active
                 sourceComponent: Label {
