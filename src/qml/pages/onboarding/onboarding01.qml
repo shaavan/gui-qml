@@ -16,6 +16,20 @@ Page {
         anchors.rightMargin: anchors.leftMargin
         spacing: 0
 
+        header: RowLayout {
+            height: 50
+            Layout.alignment: Qt.AlignRight
+            Layout.rightMargin: 10
+            Loader {
+                active: true
+                visible: active
+                sourceComponent: TextButton {
+                    text: "i"
+                    onClicked: //To Be Figured out
+                }
+            }
+        }
+
         Image {
             Layout.alignment: Qt.AlignVCenter
             Layout.topMargin: 50
