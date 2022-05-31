@@ -307,6 +307,7 @@ QML_RES_QML = \
   qml/components/BlockCounter.qml \
   qml/components/ConnectionOptions.qml \
   qml/components/ConnectionSettings.qml \
+  qml/components/DeveloperOptions.qml \
   qml/components/StorageOptions.qml \
   qml/components/StorageSettings.qml \
   qml/controls/ContinueButton.qml \
@@ -323,6 +324,7 @@ QML_RES_QML = \
   qml/controls/Wizard.qml \
   qml/pages/onboarding/onboarding01.qml \
   qml/pages/onboarding/onboarding01a.qml \
+  qml/pages/onboarding/onboarding01b.qml \
   qml/pages/onboarding/onboarding02.qml \
   qml/pages/onboarding/onboarding03.qml \
   qml/pages/onboarding/onboarding04.qml \

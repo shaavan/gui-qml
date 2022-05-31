@@ -26,6 +26,7 @@ Control {
                 header: root.header
                 headerSize: 18
                 subtext: root.subtext
+                subtextSize: 15
                 subtextMargin: root.subtextMargin
                 wrap: false
             }
