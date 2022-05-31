@@ -323,6 +323,7 @@ QML_RES_QML = \
   qml/pages/onboarding/onboarding01.qml \
   qml/pages/onboarding/onboarding01a.qml \
   qml/pages/onboarding/onboarding02.qml \
+  qml/pages/onboarding/onboarding03.qml \
   qml/pages/initerrormessage.qml \
   qml/pages/stub.qml
 
