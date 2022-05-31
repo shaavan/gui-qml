@@ -18,17 +18,17 @@ Page {
         anchors.top: parent.top
         anchors.horizontalCenter: parent.horizontalCenter
         Header {
-            Layout.alignment: Qt.AlignCenter
-            header: "Connection"
-            description: "Communicating with the Bitcoin network can use a lot of data."
+            Layout.fillWidth: true
+            header: qsTr("Connection")
+            description: qsTr("Communicating with the Bitcoin network can use a lot of data.")
         }
         ConnectionOptions {
             Layout.topMargin: 30
             Layout.alignment: Qt.AlignCenter
         }
         TextButton {
-            Layout.topMargin: 30
             Layout.alignment: Qt.AlignCenter
+            Layout.topMargin: 30
             text: "Detailed Settings"
             textSize: 18
             textColor: "#F7931A"
@@ -42,10 +42,6 @@ Page {
             Layout.topMargin: 40
             text: "Next"
             onClicked: swipeView.incrementCurrentIndex()
-        }
-        Rectangle {
-            color: "transparent"
-            height: parent.height
         }
     }
 }
