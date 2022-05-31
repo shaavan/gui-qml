@@ -13,15 +13,15 @@ Page {
     Layout.fillWidth: true
     clip: true
     SwipeView {
-        id: storages
+        id: connections
         anchors.fill: parent
         interactive: false
         orientation: Qt.Vertical
         Loader {
-            source:"onboarding04a.qml"
+            source:"onboarding06a.qml"
         }
         Loader {
-            source:"onboarding04b.qml"
+            source:"onboarding06b.qml"
         }
     }
 }

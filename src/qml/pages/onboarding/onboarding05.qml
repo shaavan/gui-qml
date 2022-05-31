@@ -13,7 +13,7 @@ Page {
     Layout.fillWidth: true
     clip: true
     SwipeView {
-        id: connections
+        id: storages
         anchors.fill: parent
         interactive: false
         orientation: Qt.Vertical

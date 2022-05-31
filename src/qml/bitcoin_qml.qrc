@@ -22,12 +22,12 @@
         <file>pages/onboarding/onboarding01a.qml</file>
         <file>pages/onboarding/onboarding02.qml</file>
         <file>pages/onboarding/onboarding03.qml</file>
-        <file>pages/onboarding/onboarding04.qml</file>
-        <file>pages/onboarding/onboarding04a.qml</file>
-        <file>pages/onboarding/onboarding04b.qml</file>
         <file>pages/onboarding/onboarding05.qml</file>
         <file>pages/onboarding/onboarding05a.qml</file>
         <file>pages/onboarding/onboarding05b.qml</file>
+        <file>pages/onboarding/onboarding06.qml</file>
+        <file>pages/onboarding/onboarding06a.qml</file>
+        <file>pages/onboarding/onboarding06b.qml</file>
         <file>pages/initerrormessage.qml</file>
         <file>pages/stub.qml</file>
     </qresource>

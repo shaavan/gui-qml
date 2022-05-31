@@ -2,9 +2,9 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-import QtQuick 2.15
-import QtQuick.Controls 2.15
-import QtQuick.Layouts 1.15
+import QtQuick 2.12
+import QtQuick.Controls 2.12
+import QtQuick.Layouts 1.11
 import "../../controls"
 import "../../components"
 
@@ -19,21 +19,21 @@ Page {
         anchors.horizontalCenter: parent.horizontalCenter
         Header {
             Layout.fillWidth: true
-            header: qsTr("Connection")
-            description: qsTr("Communicating with the Bitcoin network can use a lot of data.")
+            header: qsTr("Storage")
+            description: qsTr("Data retrieved from the Bitcoin network is stored on your device. You have 500GB of storage available.")
         }
-        ConnectionOptions {
+        StorageOptions {
             Layout.topMargin: 30
             Layout.alignment: Qt.AlignCenter
         }
         TextButton {
             Layout.alignment: Qt.AlignCenter
             Layout.topMargin: 30
-            text: "Detailed Settings"
+            text: "Detailed settings"
             textSize: 18
             textColor: "#F7931A"
             onClicked: {
-              connections.incrementCurrentIndex()
+              storages.incrementCurrentIndex()
               swipeView.inSubPage = true
             }
         }
@@ -41,7 +41,7 @@ Page {
             Layout.alignment: Qt.AlignCenter
             Layout.topMargin: 40
             text: "Next"
-            onClicked: swipeView.finished = true
+            onClicked: swipeView.incrementCurrentIndex()
         }
     }
 }

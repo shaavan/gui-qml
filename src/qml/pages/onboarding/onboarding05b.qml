@@ -19,9 +19,9 @@ Page {
         anchors.horizontalCenter: parent.horizontalCenter
         Header {
             Layout.fillWidth: true
-            header: "Connection"
+            header: "Storage settings"
         }
-        ConnectionSettings {
+        StorageSettings {
             Layout.topMargin: 50
         }
         TextButton {
