@@ -19,6 +19,7 @@
         <file>controls/Wizard.qml</file>
         <file>pages/onboarding/onboarding01.qml</file>
         <file>pages/onboarding/onboarding01a.qml</file>
+        <file>pages/onboarding/onboarding02.qml</file>
         <file>pages/initerrormessage.qml</file>
         <file>pages/stub.qml</file>
     </qresource>
