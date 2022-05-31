@@ -10,30 +10,21 @@ import "../../components"
 
 Page {
     background: null
-    Layout.fillWidth: true
     clip: true
+    Layout.fillWidth: true
     ColumnLayout {
-        width: 800
-        spacing: 0
-        anchors.top: parent.top
-        anchors.horizontalCenter: parent.horizontalCenter
-        Header {
-            Layout.fillWidth: true
-            header: "Developer options"
-        }
-        DeveloperOptions {
-            Layout.topMargin: 50
-        }
-        TextButton {
-            Layout.alignment: Qt.AlignCenter
-            Layout.topMargin: 30
-            text: "Done"
-            textSize: 18
-            textColor: "white"
-            onClicked: {
-                connections.decrementCurrentIndex()
-                swipeView.inSubPage = false
-            }
-        }
+      width: 800
+      spacing: 0
+      anchors.top: parent.top
+      anchors.horizontalCenter: parent.horizontalCenter
+      Header {
+          bold: true
+          Layout.fillWidth: true
+          header: "About"
+          description: qsTr("Bitcoin Core is an open source project.\nIf you find it useful, please contribute.\n\n This is experimental software.")
+      }
+      AboutOptions {
+          Layout.topMargin: 47.5
+      }
     }
 }
