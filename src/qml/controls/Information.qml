@@ -27,7 +27,6 @@ Control {
             Loader {
                 Layout.fillWidth: true
                 Layout.preferredWidth: 0
-                //Probably this Loader shall also be right Aligned.
                 Layout.rightMargin: 12
                 active: root.description.length > 0
                 visible: active
@@ -42,7 +41,7 @@ Control {
                     MouseArea {
                         id: mouseArea
                         anchors.fill: parent
-                        cursorShape: Qt.PointingHandCursor
+                        cursorShape: link.length > 0 ? Qt.PointingHandCursor : Qt.ArrowCursor
                     }
                     horizontalAlignment: Text.AlignRight
                     wrapMode: Text.WordWrap
