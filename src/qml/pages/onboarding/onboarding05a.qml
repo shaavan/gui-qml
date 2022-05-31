@@ -41,7 +41,7 @@ Page {
             Layout.alignment: Qt.AlignCenter
             Layout.topMargin: 40
             text: "Next"
-            onClicked: swipeView.incrementCurrentIndex()
+            onClicked: swipeView.finished = true
         }
     }
 }
