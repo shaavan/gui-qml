@@ -25,9 +25,9 @@ Control {
                 center: false
                 header: root.header
                 headerSize: 18
-                subtext: root.subtext
-                subtextSize: 15
-                subtextMargin: root.subtextMargin
+                description: root.subtext
+                descriptionSize: 15
+                descriptionMargin: root.subtextMargin
                 wrap: false
             }
             Loader {
