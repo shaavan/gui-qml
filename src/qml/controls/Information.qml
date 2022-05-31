@@ -11,6 +11,8 @@ Control {
     property bool last: parent && root === parent.children[parent.children.length - 1]
     required property string header
     property string description
+    property int descriptionMargin: 10
+    property int descriptionSize: 18
     property string link
     contentItem: ColumnLayout {
         spacing: 20
@@ -26,6 +28,7 @@ Control {
                 Layout.fillWidth: true
                 Layout.preferredWidth: 0
                 //Probably this Loader shall also be right Aligned.
+                Layout.rightMargin: 12
                 active: root.description.length > 0
                 visible: active
                 sourceComponent: Label {
@@ -42,9 +45,9 @@ Control {
                         cursorShape: Qt.PointingHandCursor
                     }
                     horizontalAlignment: Text.AlignRight
-                    rightMargin: 12
                     wrapMode: Text.WordWrap
                 }
+            }
         }
         Loader {
             Layout.fillWidth:true

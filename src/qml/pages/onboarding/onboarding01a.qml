@@ -17,9 +17,10 @@ Page {
       anchors.top: parent.top
       anchors.horizontalCenter: parent.horizontalCenter
       Header {
+          bold: true
           Layout.fillWidth: true
           header: "About"
-          description: qsTr("Bitcoin Core is an open source project. If you find it useful, please contribute.\n This is experimental software.")
+          description: qsTr("Bitcoin Core is an open source project.\nIf you find it useful, please contribute.\n\n This is experimental software.")
       }
       AboutOptions {
           Layout.topMargin: 47.5
