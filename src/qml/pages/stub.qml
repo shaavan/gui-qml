@@ -26,7 +26,7 @@ ApplicationWindow {
         id: onboardingWizard
         anchors.fill: parent
         views: [
-            "onboarding/onboarding05.qml",
+            "onboarding/onboarding01a.qml",
         ]
         onFinishedChanged: main.push(node)
     }

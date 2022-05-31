@@ -10,6 +10,8 @@ Control {
     id: root
     property bool last: parent && root === parent.children[parent.children.length - 1]
     required property string header
+    property string subtext
+    property int subtextMargin: 3
     property string description
     property int descriptionMargin: 10
     property int descriptionSize: 18
@@ -23,6 +25,9 @@ Control {
                 center: false
                 header: root.header
                 headerSize: 18
+                subtext: root.subtext
+                subtextMargin: root.subtextMargin
+                wrap: false
             }
             Loader {
                 Layout.fillWidth: true
