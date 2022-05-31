@@ -321,7 +321,6 @@ QML_RES_QML = \
   qml/controls/Theme.qml \
   qml/controls/Wizard.qml \
   qml/pages/onboarding/onboarding01.qml \
-  qml/pages/onboarding/onboarding01test.qml \
   qml/pages/onboarding/onboarding01a.qml \
   qml/pages/initerrormessage.qml \
   qml/pages/stub.qml
