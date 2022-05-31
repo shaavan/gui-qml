@@ -29,7 +29,7 @@ Page {
             Layout.topMargin: 30
             text: "Done"
             textSize: 18
-            textColor: "white"
+            textColor: "#F7931A"
             onClicked: {
                 connections.decrementCurrentIndex()
                 swipeView.inSubPage = false

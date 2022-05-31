@@ -29,10 +29,10 @@ Page {
             Layout.topMargin: 30
             text: "Done"
             textSize: 18
-            textColor: "white"
+            textColor: "#F7931A"
             onClicked: {
                 introductions.decrementCurrentIndex()
-                swipeView.inSubPage = false
+                swipeView.inSubPage = true
             }
         }
     }

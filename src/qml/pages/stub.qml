@@ -10,9 +10,9 @@ import "../controls"
 
 ApplicationWindow {
     id: appWindow
-    title: "Bitcoin Core TnG"
-    minimumWidth: 750
-    minimumHeight: 450
+    title: "Bitcoin Core App"
+    minimumWidth: 800
+    minimumHeight: 700
     color: Theme.color.background
     visible: true
 
@@ -27,6 +27,11 @@ ApplicationWindow {
         anchors.fill: parent
         views: [
             "onboarding/onboarding01.qml",
+            "onboarding/onboarding02.qml",
+            "onboarding/onboarding03.qml",
+            "onboarding/onboarding04.qml",
+            "onboarding/onboarding05.qml",
+            "onboarding/onboarding06.qml",
         ]
         onFinishedChanged: main.push(node)
     }
