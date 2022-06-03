@@ -55,6 +55,11 @@ ApplicationWindow {
                     Layout.alignment: Qt.AlignCenter
                     blockHeight: nodeModel.blockTipHeight
                 }
+                PeersIndicator {
+                    Layout.alignment: Qt.AlignCenter
+                    numOutboundPeers: nodeModel.numOutboundPeers
+                    maxNumOutboundPeers: nodeModel.maxNumOutboundPeers
+                }
                 ProgressIndicator {
                     width: 200
                     Layout.alignment: Qt.AlignCenter
