@@ -15,6 +15,7 @@ Control {
     property string description
     property int descriptionMargin: 10
     property int descriptionSize: 18
+    property bool isReadonly: true
     property string link
     contentItem: ColumnLayout {
         spacing: 20
@@ -36,19 +37,16 @@ Control {
                 Layout.rightMargin: 12
                 active: root.description.length > 0
                 visible: active
-                sourceComponent: Label {
+                sourceComponent: TextEdit {
                     topPadding: root.descriptionMargin
                     font.family: "Inter"
                     font.styleName: "Regular"
                     font.pointSize: root.descriptionSize
                     color: Theme.color.neutral8
-                    text: root.description
+                    textFormat: Text.RichText
+                    text: "<style>a:link { color: " + Theme.color.neutral8 + "; text-decoration: none;}</style>" + "<a href=\"" + link + "\">" + root.description + "</a>"
+                    readOnly: isReadonly
                     onLinkActivated: Qt.openUrlExternally(link)
-                    MouseArea {
-                        id: mouseArea
-                        anchors.fill: parent
-                        cursorShape: link.length > 0 ? Qt.PointingHandCursor : Qt.ArrowCursor
-                    }
                     horizontalAlignment: Text.AlignRight
                     wrapMode: Text.WordWrap
                 }
