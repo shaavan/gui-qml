@@ -36,16 +36,4 @@ Page {
             }
         }
     }
-    footer: Page {
-        background: Rectangle {
-            color: "black"
-        }
-        contentItem: RowLayout {
-            PageIndicator {
-                Layout.alignment: Qt.AlignCenter
-                count: swipeView.count
-                currentIndex: swipeView.currentIndex
-            }
-        }
-    }
 }
