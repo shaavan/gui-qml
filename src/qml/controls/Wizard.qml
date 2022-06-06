@@ -12,7 +12,7 @@ Page {
     property alias finished: swipeView.finished
     background: null
     header: RowLayout {
-        height: 50
+        height: swipeView.currentIndex > 0 ? 50 : 0
         Layout.leftMargin: 10
         Loader {
             active: swipeView.currentIndex > 0 ? true : false
@@ -33,18 +33,6 @@ Page {
             model: views.length
             Loader {
                 source: "../pages/" + views[index]
-            }
-        }
-    }
-    footer: Page {
-        background: Rectangle {
-            color: "black"
-        }
-        contentItem: RowLayout {
-            PageIndicator {
-                Layout.alignment: Qt.AlignCenter
-                count: swipeView.count
-                currentIndex: swipeView.currentIndex
             }
         }
     }
