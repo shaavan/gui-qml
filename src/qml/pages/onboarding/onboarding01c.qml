@@ -17,9 +17,14 @@ Page {
         spacing: 0
         anchors.top: parent.top
         anchors.horizontalCenter: parent.horizontalCenter
+        Rectangle {
+            height: 50
+            color: "transparent"
+        }
         Header {
             Layout.fillWidth: true
             header: "Developer options"
+            bold: true
         }
         DeveloperOptions {
             Layout.topMargin: 50

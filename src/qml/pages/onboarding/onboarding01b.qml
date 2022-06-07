@@ -11,12 +11,17 @@ import "../../components"
 Page {
     background: null
     clip: true
-    Layout.fillWidth: true
+    Layout.preferredWidth: 600
     ColumnLayout {
-        width: 800
+        Layout.fillWidth: true
+        Layout.maximumWidth: 600
         spacing: 0
         anchors.top: parent.top
         anchors.horizontalCenter: parent.horizontalCenter
+        Rectangle {
+            height: 50
+            color: "transparent"
+        }
         Header {
             bold: true
             Layout.fillWidth: true

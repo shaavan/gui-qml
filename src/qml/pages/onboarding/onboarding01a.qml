@@ -15,15 +15,17 @@ Page {
     clip: true
     Layout.fillWidth: true
     ColumnLayout {
-        width: 600
+        width: 800
+        Layout.maximumWidth: 800
         spacing: 0
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: parent.top
 
         RowLayout {
-            height: 50
+            Layout.preferredHeight: 50
             Layout.alignment: Qt.AlignRight
             Layout.rightMargin: 10
+            Layout.leftMargin: 10
             Loader {
                 active: true
                 visible: active
@@ -36,30 +38,35 @@ Page {
                 }
             }
         }
-        Image {
+        ColumnLayout {
+            Layout.maximumWidth: 600
             Layout.alignment: Qt.AlignCenter
-            source: "image://images/app"
-            sourceSize.width: 100
-            sourceSize.height: 100
-        }
-        Header {
-            Layout.fillWidth: true
-            implicitWidth: childrenRect.width
-            bold: true
-            header: qsTr("Bitcoin Core App")
-            headerSize: 36
-            headerMargin: 30
-            description: qsTr("Be part of the Bitcoin network.")
-            descriptionSize: 24
-            descriptionMargin: 0
-            subtext: qsTr("100% open-source & open-design")
-            subtextMargin: 30
-        }
-        ContinueButton {
-            Layout.alignment: Qt.AlignCenter
-            Layout.topMargin: 76
-            text: "Start"
-            onClicked: swipeView.incrementCurrentIndex()
+            Layout.bottomMargin: 40
+            Image {
+                Layout.alignment: Qt.AlignCenter
+                source: "image://images/app"
+                sourceSize.width: 100
+                sourceSize.height: 100
+            }
+            Header {
+                Layout.fillWidth: true
+                implicitWidth: childrenRect.width
+                bold: true
+                header: qsTr("Bitcoin Core App")
+                headerSize: 36
+                headerMargin: 30
+                description: qsTr("Be part of the Bitcoin network.")
+                descriptionSize: 24
+                descriptionMargin: 0
+                subtext: qsTr("100% open-source & open-design")
+                subtextMargin: 30
+            }
+            ContinueButton {
+                Layout.alignment: Qt.AlignCenter
+                Layout.topMargin: 40
+                text: "Start"
+                onClicked: swipeView.incrementCurrentIndex()
+            }
         }
     }
 }
