@@ -13,18 +13,23 @@ Page {
     clip: true
     Layout.fillWidth: true
     ColumnLayout {
-        width: 800
+        width: 600
         spacing: 0
         anchors.top: parent.top
         anchors.horizontalCenter: parent.horizontalCenter
+        Rectangle {
+            height: 50
+            color: "transparent"
+        }
         Header {
-            bold: true
             Layout.fillWidth: true
+            bold: true
             header: "About"
             description: qsTr("Bitcoin Core is an open source project.\nIf you find it useful, please contribute.\n\n This is experimental software.")
+            descriptionMargin: 10
         }
         AboutOptions {
-            Layout.topMargin: 47.5
+            Layout.topMargin: 30
         }
         TextButton {
             Layout.alignment: Qt.AlignCenter

@@ -22,7 +22,7 @@ Page {
 
         RowLayout {
             height: 50
-            Layout.alignment: Qt.AlignRight
+            Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
             Layout.rightMargin: 10
             Loader {
                 active: true
@@ -51,13 +51,13 @@ Page {
             headerMargin: 30
             description: qsTr("Be part of the Bitcoin network.")
             descriptionSize: 24
-            descriptionMargin: 0
+            descriptionMargin: 10
             subtext: qsTr("100% open-source & open-design")
             subtextMargin: 30
         }
         ContinueButton {
             Layout.alignment: Qt.AlignCenter
-            Layout.topMargin: 76
+            Layout.topMargin: 40
             text: "Start"
             onClicked: swipeView.incrementCurrentIndex()
         }

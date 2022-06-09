@@ -23,15 +23,17 @@ ColumnLayout {
         Layout.fillWidth: true
         header: qsTr("Network")
         description: qsTr("Mainnet")
+        isReadonly: false
     }
     Information {
         Layout.fillWidth: true
         header: qsTr("Other option...")
         description: qsTr("42")
+        isReadonly: false
     }
     Setting {
         Layout.fillWidth: true
         header: qsTr("Other option...")
-        description:qsTr("Description...")
+        description: qsTr("Description...")
     }
 }

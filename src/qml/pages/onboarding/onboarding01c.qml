@@ -13,16 +13,21 @@ Page {
     clip: true
     Layout.fillWidth: true
     ColumnLayout {
-        width: 800
+        width: 600
         spacing: 0
         anchors.top: parent.top
         anchors.horizontalCenter: parent.horizontalCenter
+        Rectangle {
+            height: 50
+            color: "transparent"
+        }
         Header {
             Layout.fillWidth: true
+            bold: true
             header: "Developer options"
         }
         DeveloperOptions {
-            Layout.topMargin: 50
+            Layout.topMargin: 30
         }
         TextButton {
             Layout.alignment: Qt.AlignCenter
