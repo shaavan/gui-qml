@@ -14,7 +14,6 @@ ColumnLayout {
     spacing: 15
     OptionButton {
         ButtonGroup.group: group
-        Layout.fillWidth: true
         text: qsTr("SD Card")
         description: qsTr("The available space is large enough for full block storage. ")
         recommended: true
@@ -22,7 +21,6 @@ ColumnLayout {
     }
     OptionButton {
         ButtonGroup.group: group
-        Layout.fillWidth: true
         text: qsTr("Hard drive")
         description: qsTr("Available space only allows for partial block storage.")
     }

@@ -11,8 +11,8 @@ import "../controls"
 ApplicationWindow {
     id: appWindow
     title: "Bitcoin Core App"
-    minimumWidth: 800
-    minimumHeight: 700
+    minimumWidth: 640
+    minimumHeight: 800
     color: Theme.color.background
     visible: true
 
@@ -61,6 +61,6 @@ ApplicationWindow {
                     progress: nodeModel.verificationProgress
                 }
             }
-         }
+        }
     }
 }

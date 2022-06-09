@@ -13,7 +13,7 @@ Page {
     Layout.fillWidth: true
     clip: true
     ColumnLayout {
-        width: 800
+        width: 600
         spacing: 0
         anchors.top: parent.top
         anchors.horizontalCenter: parent.horizontalCenter
