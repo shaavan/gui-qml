@@ -9,9 +9,10 @@ import "../../controls"
 
 Page {
     background: null
+    clip: true
     Layout.fillWidth: true
     ColumnLayout {
-        width: 800
+        width: 600
         spacing: 0
         anchors.top: parent.top
         anchors.horizontalCenter: parent.horizontalCenter
@@ -27,7 +28,7 @@ Page {
             bold: true
             header: qsTr("The block clock")
             headerMargin: 30
-            description: qsTr("The Bitcoin network targets a new block every 10 minutes. Sometimes it's faster and sometimes slower.\n\nThe block clock indicates each block on a dial that represents the current day.")
+            description: qsTr("The Bitcoin network targets a new block every\n10 minutes. Sometimes it's faster and sometimes slower.\n\nThe block clock indicates each block on a dial\nthat represents the current day.")
             descriptionMargin: 20
         }
         ContinueButton {
