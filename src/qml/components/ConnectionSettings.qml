@@ -17,11 +17,13 @@ ColumnLayout {
         Layout.fillWidth: true
         header: qsTr("Daily upload limit")
         description: qsTr("250 MB")
+        isReadonly: false
     }
     Information {
         Layout.fillWidth: true
         header: qsTr("Connection limit")
         description: qsTr("6")
+        isReadonly: false
     }
     Setting {
         Layout.fillWidth: true
@@ -39,6 +41,7 @@ ColumnLayout {
         header: qsTr("Networks")
         subtext: qsTr("Which networks to use for communication")
         description: qsTr("6")
+        isReadonly: false
     }
     Information {
         Layout.fillWidth: true

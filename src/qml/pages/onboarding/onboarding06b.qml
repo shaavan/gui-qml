@@ -13,7 +13,7 @@ Page {
     Layout.fillWidth: true
     clip: true
     ColumnLayout {
-        width: 800
+        width: 600
         spacing: 0
         anchors.top: parent.top
         anchors.horizontalCenter: parent.horizontalCenter
@@ -22,7 +22,7 @@ Page {
             header: "Connection settings"
         }
         ConnectionSettings {
-            Layout.topMargin: 50
+            Layout.topMargin: 30
         }
         TextButton {
             Layout.alignment: Qt.AlignCenter
