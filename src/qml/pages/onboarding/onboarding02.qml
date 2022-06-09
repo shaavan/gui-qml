@@ -9,9 +9,10 @@ import "../../controls"
 
 Page {
     background: null
+    clip: true
     Layout.fillWidth: true
     ColumnLayout {
-        width: 800
+        width: 600
         spacing: 0
         anchors.top: parent.top
         anchors.horizontalCenter: parent.horizontalCenter
@@ -27,7 +28,7 @@ Page {
             bold: true
             header: qsTr("Strengthen bitcoin")
             headerMargin: 30
-            description: qsTr("Bitcoin Core runs a full Bitcoin node which verifies the rules of the network are being followed.\n\nUsers running nodes is what makes bitcoin so resilient and trustworthy.")
+            description: qsTr("Bitcoin Core runs a full Bitcoin node which verifies the rules of the network are being followed.\n\nUsers running nodes is what makes bitcoin\nso resilient and trustworthy.")
             descriptionMargin: 20
         }
         ContinueButton {
