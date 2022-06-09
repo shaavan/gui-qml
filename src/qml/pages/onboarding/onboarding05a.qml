@@ -20,7 +20,7 @@ Page {
         Header {
             Layout.fillWidth: true
             header: qsTr("Storage")
-            description: qsTr("Data retrieved from the Bitcoin network is stored on your device. You have 500GB of storage available.")
+            description: qsTr("Data retrieved from the Bitcoin network is stored\non your device.\n\nYou have 500GB of storage available.")
         }
         StorageOptions {
             Layout.topMargin: 30

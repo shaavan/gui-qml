@@ -17,15 +17,18 @@ ColumnLayout {
         Layout.fillWidth: true
         header: qsTr("Storage limit")
         description: qsTr("75 GB")
+        isReadonly: false
     }
     Information {
         Layout.fillWidth: true
         header: qsTr("Data location")
         description: qsTr("c://.../data")
+        isReadonly: false
     }
     Information {
         Layout.fillWidth: true
         header: qsTr("Block location")
         description: qsTr("c://.../blocks")
+        isReadonly: false
     }
 }
