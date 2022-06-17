@@ -16,6 +16,9 @@ Control {
     property int descriptionMargin: 10
     property int descriptionSize: 18
     property bool isReadonly: true
+    property bool hasIcon: false
+    property string iconSource
+    property int iconWidth: 30
     property string link
     contentItem: ColumnLayout {
         spacing: 20
@@ -49,6 +52,30 @@ Control {
                     onLinkActivated: Qt.openUrlExternally(link)
                     horizontalAlignment: Text.AlignRight
                     wrapMode: Text.WordWrap
+                }
+            }
+            Loader {
+                Layout.preferredWidth: root.iconWidth
+                Layout.alignment: Qt.AlignRight
+                Layout.rightMargin: 12
+                active: root.hasIcon
+                visible: active
+                sourceComponent: Image {
+                    horizontalAlignment: Image.AlignRight
+                    fillMode: Image.PreserveAspectFit
+                    // topPadding: root.descriptionMargin
+                    // font.family: "Inter"
+                    // font.styleName: "Regular"
+                    // font.pointSize: root.descriptionSize
+                    // color: Theme.color.neutral8
+                    // textFormat: Text.RichText
+                    source: root.iconSource
+                    // width: root.iconWidth
+                    // height: root.iconHeight
+                    // text: "<style>a:link { color: " + Theme.color.neutral8 + "; text-decoration: none;}</style>" + "<a href=\"" + link + "\">" + "<img src=\"" + root.iconSource + "\" width=\"" + root.iconWidth + "\" height=\"" + root.iconHeight + "\">" + "</a>"
+                    // readOnly: isReadonly
+                    // onLinkActivated: Qt.openUrlExternally(link)
+                    // wrapMode: Text.WordWrap
                 }
             }
         }

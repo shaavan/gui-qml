@@ -12,7 +12,9 @@ ColumnLayout {
     Information {
         Layout.fillWidth: true
         header: qsTr("Developer documentation")
-        description: qsTr("Icon")
+        hasIcon: true
+        iconSource: "file:///home/shaavan/Workplace/personal-fork/qml-onboarding/gui-qml/src/qml/res/icons/export.png"
+        iconWidth: 30
         link: "https://bitcoin.org/en/bitcoin-core/contribute/documentation"
     }
     Setting {
