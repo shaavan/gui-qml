@@ -62,6 +62,7 @@ Control {
                 visible: active
                 sourceComponent: Image {
                     horizontalAlignment: Image.AlignRight
+                    source: root.iconSource
                     fillMode: Image.PreserveAspectFit
                     // topPadding: root.descriptionMargin
                     // font.family: "Inter"
@@ -69,7 +70,6 @@ Control {
                     // font.pointSize: root.descriptionSize
                     // color: Theme.color.neutral8
                     // textFormat: Text.RichText
-                    source: root.iconSource
                     mipmap: true
                     MouseArea {
                         anchors.fill: parent

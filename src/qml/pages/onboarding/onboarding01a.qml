@@ -61,7 +61,7 @@ Page {
                     // }
                     Rectangle {
                         anchors.fill: parent
-                        color: Theme.white
+                        color: Theme.color.white
                         radius: width*0.5
                     }
                     Image {
