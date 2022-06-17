@@ -23,49 +23,19 @@ Page {
         RowLayout {
             height: 50
             Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
-            // Layout.margins: 11
             Loader {
                 active: true
                 visible: active
                 Layout.margins: 11
-                // sourceComponent: TextButton {
-                //     text: "i"
-                //     onClicked: {
-                //         introductions.incrementCurrentIndex()
-                //         swipeView.inSubPage = true
-                //     }
-                // }
                 sourceComponent: Item {
                     width: 24
                     height: 24
-
-                    // Rectangle {
-                    //     anchors.fill: parent
-                    //     color: "black"
-                    //     opacity: 0.2
-                    //     radius: width*0.5
-
-                    //     Image {
-                    //         source: "file:///home/shaavan/Workplace/personal-fork/qml-onboarding/gui-qml/src/qml/res/icons/info.png"
-                    //         anchors.fill: parent
-                    //         fillMode: Image.PreserveAspectFit
-
-                    //         MouseArea {
-                    //             anchors.fill: parent
-                    //             onClicked: {
-                    //                 introductions.incrementCurrentIndex()
-                    //                 swipeView.inSubPage = true
-                    //             }
-                    //         }
-                    //     }
-                    // }
                     Rectangle {
                         anchors.fill: parent
                         color: Theme.color.white
                         radius: width*0.5
                     }
                     Image {
-                        // source: "file:///home/shaavan/Workplace/personal-fork/qml-onboarding/gui-qml/src/qml/res/icons/info.png"
                         source: "qrc:/icons/info"
                         width: parent.width
                         height: parent.height
@@ -81,26 +51,6 @@ Page {
                         }
                     }
                 }
-                // sourceComponent: Item {
-                //     width: 24
-                //     height: 24
-
-                //     Button {
-                //         iconSource: "file://home/shaavan/Workplace/personal-fork/qml-onboarding/gui-qml/src/qml/res/icons/info.png"
-                //         anchors.centerIn: parent
-                        
-                //         Rectangle {
-                //             anchors.fill: parent
-                //             color: "black"
-                //             opacity: parent.hover ? 0.5: 0
-                //         }
-
-                //         onClicked: {
-                //             introductions.incrementCurrentIndex()
-                //             swipeView.inSubPage = true
-                //         }
-                //     }
-                // }
             }
         }
         Image {

@@ -64,12 +64,6 @@ Control {
                     horizontalAlignment: Image.AlignRight
                     source: root.iconSource
                     fillMode: Image.PreserveAspectFit
-                    // topPadding: root.descriptionMargin
-                    // font.family: "Inter"
-                    // font.styleName: "Regular"
-                    // font.pointSize: root.descriptionSize
-                    // color: Theme.color.neutral8
-                    // textFormat: Text.RichText
                     mipmap: true
                     MouseArea {
                         anchors.fill: parent
@@ -77,12 +71,6 @@ Control {
                             Qt.openUrlExternally(link)
                         }
                     }
-                    // width: root.iconWidth
-                    // height: root.iconHeight
-                    // text: "<style>a:link { color: " + Theme.color.neutral8 + "; text-decoration: none;}</style>" + "<a href=\"" + link + "\">" + "<img src=\"" + root.iconSource + "\" width=\"" + root.iconWidth + "\" height=\"" + root.iconHeight + "\">" + "</a>"
-                    // readOnly: isReadonly
-                    // onLinkActivated: Qt.openUrlExternally(link)
-                    // wrapMode: Text.WordWrap
                 }
             }
         }
