@@ -61,7 +61,7 @@ Page {
                     // }
                     Rectangle {
                         anchors.fill: parent
-                        color: "white"
+                        color: Theme.white
                         radius: width*0.5
                     }
                     Image {
@@ -70,6 +70,7 @@ Page {
                         height: parent.height
                         anchors.centerIn: parent
                         fillMode: Image.PreserveAspectFit
+                        mipmap: true
                         MouseArea {
                             anchors.fill: parent
                             onClicked: {

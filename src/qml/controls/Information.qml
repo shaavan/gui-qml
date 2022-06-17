@@ -70,6 +70,13 @@ Control {
                     // color: Theme.color.neutral8
                     // textFormat: Text.RichText
                     source: root.iconSource
+                    mipmap: true
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            Qt.openUrlExternally(link)
+                        }
+                    }
                     // width: root.iconWidth
                     // height: root.iconHeight
                     // text: "<style>a:link { color: " + Theme.color.neutral8 + "; text-decoration: none;}</style>" + "<a href=\"" + link + "\">" + "<img src=\"" + root.iconSource + "\" width=\"" + root.iconWidth + "\" height=\"" + root.iconHeight + "\">" + "</a>"
