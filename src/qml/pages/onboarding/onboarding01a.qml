@@ -65,7 +65,8 @@ Page {
                         radius: width*0.5
                     }
                     Image {
-                        source: "file:///home/shaavan/Workplace/personal-fork/qml-onboarding/gui-qml/src/qml/res/icons/info.png"
+                        // source: "file:///home/shaavan/Workplace/personal-fork/qml-onboarding/gui-qml/src/qml/res/icons/info.png"
+                        source: "qrc:/icons/info"
                         width: parent.width
                         height: parent.height
                         anchors.centerIn: parent

@@ -36,7 +36,9 @@ Page {
                     // anchors.centerIn: parent
                     spacing: 0
                     Image {
-                        source: "file:///home/shaavan/Workplace/personal-fork/qml-onboarding/gui-qml/src/qml/res/icons/caret-left.png"
+                        // source: "file:///home/shaavan/Workplace/personal-fork/qml-onboarding/gui-qml/src/qml/res/icons/caret-left.png"
+                        source: "qrc:/icons/caret-left"
+                        mipmap: true
                         Layout.preferredWidth: 24
                         Layout.preferredHeight: 24
                         Layout.alignment: Qt.AlignVCenter
@@ -55,7 +57,7 @@ Page {
                         text: "Back"
                         color: Theme.color.neutral9
                         font.family: "Inter"
-                        font.styleName: "Regular"
+                        font.styleName: "Semi Bold"
                         font.pointSize: 18
                     }
                     // Rectangle {

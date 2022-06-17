@@ -13,7 +13,8 @@ ColumnLayout {
         Layout.fillWidth: true
         header: qsTr("Developer documentation")
         hasIcon: true
-        iconSource: "file:///home/shaavan/Workplace/personal-fork/qml-onboarding/gui-qml/src/qml/res/icons/export.png"
+        // iconSource: "file:///home/shaavan/Workplace/personal-fork/qml-onboarding/gui-qml/src/qml/res/icons/export.png"
+        iconSource: "qrc:/icons/export"
         iconWidth: 30
         link: "https://bitcoin.org/en/bitcoin-core/contribute/documentation"
     }
