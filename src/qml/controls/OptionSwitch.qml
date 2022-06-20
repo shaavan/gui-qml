@@ -23,17 +23,17 @@ Switch {
             height: 20
             radius: 18
             color: Theme.color.white
-        }
 
-        DropShadow {
-            anchors.fill: indicatorButton
-            horizontalOffset: 0
-            verticalOffset: 5
-            radius: 10.0
-            spread: 0.0
-            samples: 21
-            color: "#00000040"
-            source: indicatorButton
+            DropShadow {
+                anchors.fill: indicatorButton
+                horizontalOffset: 0
+                verticalOffset: 5
+                radius: 10.0
+                spread: 0.0
+                samples: 21
+                color: "#00000040"
+                source: indicatorButton
+            }
         }
     }
 }
