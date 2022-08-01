@@ -12,25 +12,25 @@ ColumnLayout {
     Information {
         Layout.fillWidth: true
         header:  qsTr("Website")
-        description: qsTr("bitcoincore.org >")
+        description: "bitcoincore.org >"
         link: "https://bitcoincore.org"
     }
     Information {
         Layout.fillWidth: true
         header:  qsTr("Source code")
-        description: qsTr("github.com/bitcoin/bitcoin >")
+        description: "github.com/bitcoin/bitcoin >"
         link: "https://github.com/bitcoin/bitcoin"
     }
     Information {
         Layout.fillWidth: true
         header:  qsTr("License")
-        description: qsTr("MIT >")
+        description: "MIT >"
         link: "https://opensource.org/licenses/MIT"
     }
     Information {
         Layout.fillWidth: true
         header:  qsTr("Version")
-        description: qsTr("v22.99.0-1e7564eca8a6 >")
+        description: "v22.99.0-1e7564eca8a6 >"
         link: "https://bitcoin.org/en/download"
     }
     RowLayout {
@@ -39,7 +39,7 @@ ColumnLayout {
             center: false
             header: qsTr("Developer options")
             headerSize: 18
-            description: qsTr("Only use these if you have development experience")
+            description: "Only use these if you have development experience"
             descriptionSize: 15
             descriptionMargin: 10
             wrap: false

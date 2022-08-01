@@ -22,7 +22,7 @@ ColumnLayout {
     Information {
         Layout.fillWidth: true
         header: qsTr("Connection limit")
-        description: qsTr("6")
+        description: "6"
         isReadonly: false
     }
     Setting {
@@ -39,13 +39,13 @@ ColumnLayout {
         Layout.fillWidth: true
         header: qsTr("Networks")
         subtext: qsTr("Which networks to use for communication")
-        description: qsTr("6")
+        description: "6"
         isReadonly: false
     }
     Information {
         last: true
         Layout.fillWidth: true
         header: qsTr("Proxy settings")
-        description: qsTr(">")
+        description: ">"
     }
 }

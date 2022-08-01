@@ -22,13 +22,13 @@ ColumnLayout {
     Information {
         Layout.fillWidth: true
         header: qsTr("Data location")
-        description: qsTr("c://.../data")
+        description: "c://.../data"
         isReadonly: false
     }
     Information {
         Layout.fillWidth: true
         header: qsTr("Block location")
-        description: qsTr("c://.../blocks")
+        description: "c://.../blocks"
         isReadonly: false
     }
 }

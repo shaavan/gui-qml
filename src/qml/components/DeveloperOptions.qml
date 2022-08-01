@@ -29,7 +29,7 @@ ColumnLayout {
     Information {
         Layout.fillWidth: true
         header: qsTr("Other option...")
-        description: qsTr("42")
+        description: "42"
         isReadonly: false
     }
     Setting {
