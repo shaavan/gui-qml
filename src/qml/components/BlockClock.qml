@@ -9,9 +9,12 @@ Item {
     width: size
     height: size
 
+    property real progress: 0
+    property int blockHeight: 10
+
     property int size: 200               // The size of the circle in pixel
     property real arcBegin: 0            // start arc angle in degree
-    property real arcEnd: 200            // end arc angle in degree
+    property real arcEnd: progress * 360 // end arc angle in degree
     property bool showBackground: true  // a full circle as a background of the arc
     property real lineWidth: 4          // width of the line
     property string colorCircle: "#f1d54a"
@@ -19,7 +22,7 @@ Item {
 
     property alias endAnimation: animationArcEnd.enabled
 
-    property int animationDuration: 200
+    property int animationDuration: 250
 
     onArcBeginChanged: canvas.requestPaint()
     onArcEndChanged: canvas.requestPaint()
@@ -28,9 +31,10 @@ Item {
        id: animationArcEnd
        enabled: true
        NumberAnimation {
-           duration: root.animationDuration
-           easing.type: Easing.InOutCubic
-       }
+            easing.type: Easing.Bezier
+            easing.bezierCurve: [0.5, 0.0, 0.2, 1, 1, 1]
+            duration: root.animationDuration
+        }
     }
 
     Canvas {
@@ -74,7 +78,7 @@ Item {
         }
         Text {
             Layout.alignment: Qt.AlignCenter
-            text: "343,754"
+            text: root.blockHeight
             font.family: "Inter"
             font.pixelSize: 32
         }

@@ -41,7 +41,10 @@ ApplicationWindow {
             anchors.fill: parent
             background: null
             
-            BlockClock {}
+            BlockClock {
+                blockHeight: nodeModel.blockTipHeight
+                progress: nodeModel.verificationProgress
+            }
             // ColumnLayout {
             //     width: 600
             //     spacing: 0
