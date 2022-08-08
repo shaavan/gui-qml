@@ -40,6 +40,8 @@ ApplicationWindow {
         Page {
             anchors.fill: parent
             background: null
+
+            Component.onCompleted: nodeModel.startNodeInitializionThread();
             
             BlockClock {
                 blockHeight: nodeModel.blockTipHeight
