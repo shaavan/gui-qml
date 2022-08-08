@@ -44,7 +44,7 @@ ApplicationWindow {
             Component.onCompleted: nodeModel.startNodeInitializionThread();
             
             BlockClock {
-                blockHeight: nodeModel.blockTipHeight
+                // blockHeight: nodeModel.blockTipHeight
                 progress: nodeModel.verificationProgress
             }
             // ColumnLayout {

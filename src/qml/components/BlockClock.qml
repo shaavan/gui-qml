@@ -10,7 +10,7 @@ Item {
     height: size
 
     property real progress: 0
-    property int blockHeight: 10
+    // property int blockHeight: 10
 
     property int size: 200               // The size of the circle in pixel
     property real arcBegin: 0            // start arc angle in degree
@@ -77,7 +77,7 @@ Item {
         }
         Text {
             Layout.alignment: Qt.AlignCenter
-            text: root.blockHeight
+            text: Math.round(root.progress * 100) + "%"
             font.family: "Inter"
             font.pixelSize: 32
         }
