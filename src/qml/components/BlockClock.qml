@@ -10,6 +10,7 @@ Item {
     height: size
 
     property real progress: 0
+    property int remainingTime: 0
     // property int blockHeight: 10
 
     property int size: 200               // The size of the circle in pixel
@@ -83,7 +84,7 @@ Item {
         }
         Text {
             Layout.alignment: Qt.AlignCenter
-            text: "BlockTime"
+            text: Math.round(root.remainingTime/60000) > 0 ? Math.round(root.remainingTime/60000) + "mins" : Math.round(root.remainingTime/1000) + "secs"
             font.family: "Inter"
             font.pixelSize: 18
             color: "#808080"

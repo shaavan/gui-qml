@@ -10,6 +10,7 @@
 #include <cassert>
 #include <chrono>
 
+#include <QDateTime>
 #include <QTimerEvent>
 
 NodeModel::NodeModel(interfaces::Node& node)
@@ -28,6 +29,39 @@ void NodeModel::setBlockTipHeight(int new_height)
 
 void NodeModel::setVerificationProgress(double new_progress)
 {
+    QDateTime currentDate = QDateTime::currentDateTime();
+
+    // keep a vector of samples of verification progress at height
+    blockProcessTime.push_front(qMakePair(int(currentDate.toMSecsSinceEpoch()), new_progress));
+
+    // show progress speed if we have more than one sample
+    if (blockProcessTime.size() >= 2) {
+        double progressDelta = 0; //
+        int timeDelta = 0; //
+        int remainingMSecs = 0;
+        double remainingProgress = 1.0 - new_progress; //
+        for (int i = 1; i < blockProcessTime.size(); i++) {
+            QPair<int, double> sample = blockProcessTime[i];
+
+            // take first sample after 500 seconds or last available one
+            if (sample.first < (currentDate.toMSecsSinceEpoch() - 500 * 1000) || i == blockProcessTime.size() - 1) {
+                progressDelta = blockProcessTime[0].second - sample.second;
+                timeDelta = blockProcessTime[0].first - sample.first;
+                remainingMSecs = (progressDelta > 0) ? remainingProgress / progressDelta * timeDelta : -1;
+                break;
+            }
+        }
+        if(remainingMSecs >= 0 && blockProcessTime.count() % 1000 == 0) {
+            m_remaining_time = remainingMSecs;
+
+            Q_EMIT remainingTimeChanged();
+        }
+        static const int MAX_SAMPLES = 5000;
+        if (blockProcessTime.count() > MAX_SAMPLES) {
+            blockProcessTime.remove(1, blockProcessTime.count() - 1);
+        }
+    }
+
     if (new_progress != m_verification_progress) {
         m_verification_progress = new_progress;
         Q_EMIT verificationProgressChanged();

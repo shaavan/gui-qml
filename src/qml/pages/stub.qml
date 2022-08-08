@@ -46,6 +46,7 @@ ApplicationWindow {
             BlockClock {
                 // blockHeight: nodeModel.blockTipHeight
                 progress: nodeModel.verificationProgress
+                remainingTime: nodeModel.remainingSyncTime
             }
             // ColumnLayout {
             //     width: 600
