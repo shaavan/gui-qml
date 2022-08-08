@@ -68,12 +68,11 @@ Item {
     
     ColumnLayout {
         anchors.centerIn: root
-        Rectangle {
+        Image {
             Layout.alignment: Qt.AlignCenter
-            width: 30
-            height: width
-            color: "yellow"
-            radius: width * 0.5
+            source: "image://images/app"
+            sourceSize.width: 30
+            sourceSize.height: 30
             Layout.bottomMargin: 15
         }
         Text {
