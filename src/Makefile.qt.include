@@ -305,7 +305,6 @@ QML_QRC_CPP = qml/qrc_bitcoin.cpp
 QML_QRC = qml/bitcoin_qml.qrc
 QML_RES_QML = \
   qml/components/AboutOptions.qml \
-  qml/components/BlockClock.qml \
   qml/components/BlockCounter.qml \
   qml/components/ConnectionOptions.qml \
   qml/components/ConnectionSettings.qml \
@@ -313,6 +312,7 @@ QML_RES_QML = \
   qml/components/StorageLocations.qml \
   qml/components/StorageOptions.qml \
   qml/components/StorageSettings.qml \
+  qml/controls/BlockClock.qml \
   qml/controls/ContinueButton.qml \
   qml/controls/Header.qml \
   qml/controls/Information.qml \
