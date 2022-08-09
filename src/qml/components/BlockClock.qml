@@ -5,7 +5,7 @@ import QtQuick.Layouts 1.15
 Item {
     id: root
 
-    anchors.centerIn: parent
+    Layout.alignment: Qt.AlignCenter
     width: size
     height: size
 
