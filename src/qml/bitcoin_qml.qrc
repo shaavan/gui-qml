@@ -8,6 +8,7 @@
         <file>components/StorageLocations.qml</file>
         <file>components/StorageOptions.qml</file>
         <file>components/StorageSettings.qml</file>
+        <file>controls/BlockClock.qml</file>
         <file>controls/ContinueButton.qml</file>
         <file>controls/Header.qml</file>
         <file>controls/Information.qml</file>
