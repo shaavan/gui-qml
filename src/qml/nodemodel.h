@@ -63,7 +63,7 @@ private:
 
     int m_shutdown_polling_timer_id{0};
 
-    QVector<QPair<int, double>> blockProcessTime;
+    QVector<QPair<int, double>> m_block_process_time;
 
     interfaces::Node& m_node;
     std::unique_ptr<interfaces::Handler> m_handler_notify_block_tip;

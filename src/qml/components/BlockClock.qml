@@ -25,7 +25,7 @@ Item {
 
     property int animationDuration: 250
 
-    onArcBeginChanged: canvas.requestPaint()
+    // onArcBeginChanged: canvas.requestPaint()
     onArcEndChanged: canvas.requestPaint()
 
     Behavior on arcEnd {
