@@ -11,13 +11,11 @@ Item {
 
     property real progress: 0
     property int remainingTime: 0
-    // property int blockHeight: 10
 
-    property int size: 200               // The size of the circle in pixel
-    property real arcBegin: 0            // start arc angle in degree
-    property real arcEnd: progress * 360 // end arc angle in degree
-    property bool showBackground: true  // a full circle as a background of the arc
-    property real lineWidth: 4          // width of the line
+    property int size: 200
+    property real arcBegin: 0
+    property real arcEnd: progress * 360
+    property real lineWidth: 4
     property string colorCircle: "#f1d54a"
     property string colorBackground: "#333333"
 
@@ -25,7 +23,6 @@ Item {
 
     property int animationDuration: 250
 
-    // onArcBeginChanged: canvas.requestPaint()
     onArcEndChanged: canvas.requestPaint()
 
     Behavior on arcEnd {
@@ -51,14 +48,14 @@ Item {
             var end = Math.PI * (parent.arcEnd / 180)
             ctx.reset()
 
-            if (root.showBackground) {
-                ctx.beginPath();
-                ctx.arc(x, y, (width / 2) - parent.lineWidth / 2, 0, Math.PI * 2, false)
-                ctx.lineWidth = root.lineWidth
-                ctx.strokeStyle = root.colorBackground
-                ctx.stroke()
-            }
+            // Paint background
+            ctx.beginPath();
+            ctx.arc(x, y, (width / 2) - parent.lineWidth / 2, 0, Math.PI * 2, false)
+            ctx.lineWidth = root.lineWidth
+            ctx.strokeStyle = root.colorBackground
+            ctx.stroke()
 
+            // Paint foreground arc
             ctx.beginPath();
             ctx.arc(x, y, (width / 2) - parent.lineWidth / 2, start, end, false)
             ctx.lineWidth = root.lineWidth
@@ -66,7 +63,7 @@ Item {
             ctx.stroke()
         }
     }
-    
+
     ColumnLayout {
         anchors.centerIn: root
         Image {
@@ -101,6 +98,6 @@ Item {
                     color: "#808080"
                 }
             }
-        } 
+        }
     }
 }
