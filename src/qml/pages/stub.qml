@@ -18,23 +18,23 @@ ApplicationWindow {
 
     StackView {
         id: main
-        initialItem: onboardingWizard
+        initialItem: node
         anchors.fill: parent
     }
 
-    Wizard {
-        id: onboardingWizard
-        anchors.fill: parent
-        views: [
-            "onboarding/onboarding01.qml",
-            "onboarding/onboarding02.qml",
-            "onboarding/onboarding03.qml",
-            "onboarding/onboarding04.qml",
-            "onboarding/onboarding05.qml",
-            "onboarding/onboarding06.qml",
-        ]
-        onFinishedChanged: main.push(node)
-    }
+    // Wizard {
+    //     id: onboardingWizard
+    //     anchors.fill: parent
+    //     views: [
+    //         "onboarding/onboarding01.qml",
+    //         "onboarding/onboarding02.qml",
+    //         "onboarding/onboarding03.qml",
+    //         "onboarding/onboarding04.qml",
+    //         "onboarding/onboarding05.qml",
+    //         "onboarding/onboarding06.qml",
+    //     ]
+    //     onFinishedChanged: main.push(node)
+    // }
     Component {
         id: node
         Page {
