@@ -41,18 +41,9 @@ ApplicationWindow {
             anchors.fill: parent
             background: null
 
-            ColumnLayout {
-                width: 600
-                spacing: 0
-                anchors.centerIn: parent
+            Component.onCompleted: nodeModel.startNodeInitializionThread();
 
-                Component.onCompleted: nodeModel.startNodeInitializionThread();
-
-                BlockClock {
-                    progress: nodeModel.verificationProgress
-                    remainingTime: nodeModel.remainingSyncTime
-                }
-            }
+            BlockClockComponent {}
          }
     }
 }
