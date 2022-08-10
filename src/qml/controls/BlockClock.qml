@@ -19,12 +19,23 @@ Item {
     property string colorCircle: "#f1d54a"
     property string colorBackground: Theme.color.neutral2
 
+    property alias beginAnimation: animationArcBegin.enabled
     property alias endAnimation: animationArcEnd.enabled
 
     property int animationDuration: 250
 
+    onArcBeginChanged: canvas.requestPaint()
     onArcEndChanged: canvas.requestPaint()
 
+    Behavior on arcBegin {
+       id: animationArcBegin
+       enabled: true
+       NumberAnimation {
+           duration: root.animationDuration
+           easing.type: Easing.InOutCubic
+       }
+    }
+    
     Behavior on arcEnd {
        id: animationArcEnd
        enabled: true
