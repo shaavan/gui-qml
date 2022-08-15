@@ -68,6 +68,31 @@ void NodeModel::setVerificationProgress(double new_progress)
     }
 }
 
+void NodeModel::setBlockTimeProgress(int new_sync_time)
+{
+    int ms_in_12_hours = 12 * 60 * 60 * 1000;
+
+    QVariant part_of_12_hours_passed = double((new_sync_time % ms_in_12_hours)/(double)ms_in_12_hours);
+
+    if(m_block_12_hour_progress.size() > 0) {
+
+        if (m_block_12_hour_progress[-1].toDouble() > part_of_12_hours_passed.toDouble()) { // => the new progress (in 12 hours) is less than the last progress, that means 12 hours have passed. 
+            m_block_12_hour_progress.erase(m_block_12_hour_progress.begin(), m_block_12_hour_progress.end() - 1); //Clear all elements except the last one.
+        }
+
+        if(m_block_12_hour_progress[-1] != part_of_12_hours_passed) {
+            m_block_12_hour_progress.push_back(part_of_12_hours_passed);
+            Q_EMIT blockTimeProgressChanged();
+        }
+
+    }
+    else {
+        m_block_12_hour_progress.push_back(part_of_12_hours_passed);
+        Q_EMIT blockTimeProgressChanged();
+    }
+
+}
+
 void NodeModel::startNodeInitializionThread()
 {
     Q_EMIT requestedInitialize();
@@ -78,6 +103,7 @@ void NodeModel::initializeResult([[maybe_unused]] bool success, interfaces::Bloc
     // TODO: Handle the `success` parameter,
     setBlockTipHeight(tip_info.block_height);
     setVerificationProgress(tip_info.verification_progress);
+    setBlockTimeProgress(tip_info.block_time);
 }
 
 void NodeModel::startShutdownPolling()
@@ -107,5 +133,6 @@ void NodeModel::ConnectToBlockTipSignal()
         [this](SynchronizationState state, interfaces::BlockTip tip, double verification_progress) {
             setBlockTipHeight(tip.block_height);
             setVerificationProgress(verification_progress);
+            setBlockTimeProgress(tip.block_time);
         });
 }

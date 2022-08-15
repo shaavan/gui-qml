@@ -11,6 +11,7 @@
 #include <memory>
 
 #include <QObject>
+#include <QVariant>
 
 QT_BEGIN_NAMESPACE
 class QTimerEvent;
@@ -27,6 +28,7 @@ class NodeModel : public QObject
     Q_PROPERTY(int blockTipHeight READ blockTipHeight NOTIFY blockTipHeightChanged)
     Q_PROPERTY(int remainingSyncTime READ remainingSyncTime NOTIFY remainingTimeChanged)
     Q_PROPERTY(double verificationProgress READ verificationProgress NOTIFY verificationProgressChanged)
+    Q_PROPERTY(QVariantList blockTimeProgress READ blockTimeProgress NOTIFY blockTimeProgressChanged)
 
 public:
     explicit NodeModel(interfaces::Node& node);
@@ -36,6 +38,8 @@ public:
     int remainingSyncTime() const {return m_remaining_time; }
     double verificationProgress() const { return m_verification_progress; }
     void setVerificationProgress(double new_progress);
+    QVariantList blockTimeProgress() const { return m_block_12_hour_progress; }
+    void setBlockTimeProgress(int new_sync_time);
 
     Q_INVOKABLE void startNodeInitializionThread();
 
@@ -51,6 +55,7 @@ Q_SIGNALS:
     void requestedInitialize();
     void requestedShutdown();
     void verificationProgressChanged();
+    void blockTimeProgressChanged();
 
 protected:
     void timerEvent(QTimerEvent* event) override;
@@ -64,6 +69,7 @@ private:
     int m_shutdown_polling_timer_id{0};
 
     QVector<QPair<int, double>> m_block_process_time;
+    QVariantList m_block_12_hour_progress;
 
     interfaces::Node& m_node;
     std::unique_ptr<interfaces::Handler> m_handler_notify_block_tip;
