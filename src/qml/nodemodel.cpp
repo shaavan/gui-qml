@@ -79,9 +79,10 @@ void NodeModel::setBlockTimeProgress(int new_sync_time)
         if (m_block_12_hour_progress.back() != part_of_12_hours_passed) { // => the new progress (in 12 hours) is not equal to last progress, that means it might be smaller than last progress
 
             if (m_block_12_hour_progress.back().toDouble() > part_of_12_hours_passed.toDouble()) { // If new progress is less than the old one => 12 hours have passed.
-                m_block_12_hour_progress.erase(m_block_12_hour_progress.begin(), m_block_12_hour_progress.end()); //Clear all elements.
+                m_block_12_hour_progress.clear(); //Clear all elements.
             }
             m_block_12_hour_progress.push_back(part_of_12_hours_passed);
+            std::cout<<"Length of arr: "<<m_block_12_hour_progress.size()<<"\n";
             Q_EMIT blockTimeProgressChanged();
         }
     }

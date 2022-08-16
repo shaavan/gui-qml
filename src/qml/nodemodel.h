@@ -69,7 +69,7 @@ private:
     int m_shutdown_polling_timer_id{0};
 
     QVector<QPair<int, double>> m_block_process_time;
-    QVariantList m_block_12_hour_progress;
+    QVariantList m_block_12_hour_progress{0};
 
     interfaces::Node& m_node;
     std::unique_ptr<interfaces::Handler> m_handler_notify_block_tip;

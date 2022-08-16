@@ -9,6 +9,10 @@ Item {
     width: size
     height: size
 
+    property alias sync: root.isSynced
+    property bool isSynced: progress > 0.95 ? true : false
+
+
     property real progress: 0
     property int remainingTime: 0
 
