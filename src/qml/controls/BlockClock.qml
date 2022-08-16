@@ -13,19 +13,26 @@ Item {
     property int remainingTime: 0
 
     property int size: 200
-    property real arcBegin: 0
-    property real arcEnd: progress * 360
+    property real arcBegin: varList[0] // 0
+    property real arcEnd: varList[1] * 360 // progress * 360
     property real lineWidth: 4
     property string colorCircle: "#f1d54a"
     property string colorBackground: Theme.color.neutral2
 
+    property variant varList
+
     property alias beginAnimation: animationArcBegin.enabled
     property alias endAnimation: animationArcEnd.enabled
+    // property alias beginAnimation: animationVarList.enabled
+    // property alias endAnimation: animationVarList.enabled
+    // property alias varAnimation: animationVarList.enabled
+
 
     property int animationDuration: 250
 
     onArcBeginChanged: canvas.requestPaint()
     onArcEndChanged: canvas.requestPaint()
+    onVarListChanged: canvas.requestPaint()
 
     Behavior on arcBegin {
        id: animationArcBegin
@@ -46,6 +53,16 @@ Item {
         }
     }
 
+    // Behavior on varList {
+    //    id: animationVarList
+    //    enabled: true
+    //    NumberAnimation {
+    //         easing.type: Easing.Bezier
+    //         easing.bezierCurve: [0.5, 0.0, 0.2, 1, 1, 1]
+    //         duration: root.animationDuration
+    //     }
+    // }
+
     Canvas {
         id: canvas
         anchors.fill: parent
@@ -55,8 +72,8 @@ Item {
             var ctx = getContext("2d")
             var x = width / 2
             var y = height / 2
-            var start = Math.PI * (parent.arcBegin / 180)
-            var end = Math.PI * (parent.arcEnd / 180)
+            // var start = Math.PI * (parent.arcBegin / 180)
+            // var end = Math.PI * (parent.arcEnd / 180)
             ctx.reset()
 
             // Paint background
@@ -66,6 +83,11 @@ Item {
             ctx.strokeStyle = root.colorBackground
             ctx.stroke()
 
+
+            var i = 0
+            var next = i + 1
+            var start = Math.PI * (parent.varList[i] * 360 / 180)
+            var end = Math.PI * (parent.varList[next] * 360 / 180)
             // Paint foreground arc
             ctx.beginPath();
             ctx.arc(x, y, (width / 2) - parent.lineWidth / 2, start, end, false)
