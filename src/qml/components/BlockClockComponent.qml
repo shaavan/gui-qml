@@ -12,7 +12,7 @@ StackView {
         id: connectingClock
         anchors.centerIn: parent
         progress: nodeModel.verificationProgress
-        varList: [0, nodeModel.verificationProgress]
+        varList: [0, 0.5, nodeModel.verificationProgress]
         remainingTime: nodeModel.remainingSyncTime
     }
 }

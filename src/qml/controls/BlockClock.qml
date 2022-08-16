@@ -83,18 +83,24 @@ Item {
             ctx.strokeStyle = root.colorBackground
             ctx.stroke()
 
-
-            var i = 0
-            var next = i + 1
-            var start = Math.PI * (parent.varList[i] * 360 / 180)
-            var end = Math.PI * (parent.varList[next] * 360 / 180)
+            for(var i = 0; i < varList.length - 1; i++) {
+                var next = i + 1
+                var start = Math.PI * (parent.varList[i] * 360 / 180)
+                var end = Math.PI * ((parent.varList[next] - 0.01) * 360 / 180)
+                // Paint foreground arc
+                ctx.beginPath();
+                ctx.arc(x, y, (width / 2) - parent.lineWidth / 2, start, end, false)
+                ctx.lineWidth = root.lineWidth
+                ctx.strokeStyle = root.colorCircle
+                ctx.stroke()
+            }
 
             // Paint foreground arc
-            ctx.beginPath();
-            ctx.arc(x, y, (width / 2) - parent.lineWidth / 2, start, end, false)
-            ctx.lineWidth = root.lineWidth
-            ctx.strokeStyle = root.colorCircle
-            ctx.stroke()
+            // ctx.beginPath();
+            // ctx.arc(x, y, (width / 2) - parent.lineWidth / 2, start, end, false)
+            // ctx.lineWidth = root.lineWidth
+            // ctx.strokeStyle = root.colorCircle
+            // ctx.stroke()
         }
     }
 
