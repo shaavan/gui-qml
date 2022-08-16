@@ -13,7 +13,7 @@ Item {
     property int remainingTime: 0
 
     property int size: 200
-    property real arcBegin: varList[0] // 0
+    property real arcBegin: 0
     property real arcEnd: varList[1] * 360 // progress * 360
     property real lineWidth: 4
     property string colorCircle: "#f1d54a"
@@ -21,37 +21,37 @@ Item {
 
     property variant varList
 
-    property alias beginAnimation: animationArcBegin.enabled
-    property alias endAnimation: animationArcEnd.enabled
+    // property alias beginAnimation: animationArcBegin.enabled
+    // property alias endAnimation: animationArcEnd.enabled
     // property alias beginAnimation: animationVarList.enabled
     // property alias endAnimation: animationVarList.enabled
     // property alias varAnimation: animationVarList.enabled
 
 
-    property int animationDuration: 250
+    // property int animationDuration: 250
 
     onArcBeginChanged: canvas.requestPaint()
-    onArcEndChanged: canvas.requestPaint()
+    // onArcEndChanged: canvas.requestPaint()
     onVarListChanged: canvas.requestPaint()
 
-    Behavior on arcBegin {
-       id: animationArcBegin
-       enabled: true
-       NumberAnimation {
-           duration: root.animationDuration
-           easing.type: Easing.InOutCubic
-       }
-    }
+    // Behavior on arcBegin {
+    //    id: animationArcBegin
+    //    enabled: true
+    //    NumberAnimation {
+    //        duration: root.animationDuration
+    //        easing.type: Easing.InOutCubic
+    //    }
+    // }
     
-    Behavior on arcEnd {
-       id: animationArcEnd
-       enabled: true
-       NumberAnimation {
-            easing.type: Easing.Bezier
-            easing.bezierCurve: [0.5, 0.0, 0.2, 1, 1, 1]
-            duration: root.animationDuration
-        }
-    }
+    // Behavior on arcEnd {
+    //    id: animationArcEnd
+    //    enabled: true
+    //    NumberAnimation {
+    //         easing.type: Easing.Bezier
+    //         easing.bezierCurve: [0.5, 0.0, 0.2, 1, 1, 1]
+    //         duration: root.animationDuration
+    //     }
+    // }
 
     // Behavior on varList {
     //    id: animationVarList
@@ -88,6 +88,7 @@ Item {
             var next = i + 1
             var start = Math.PI * (parent.varList[i] * 360 / 180)
             var end = Math.PI * (parent.varList[next] * 360 / 180)
+
             // Paint foreground arc
             ctx.beginPath();
             ctx.arc(x, y, (width / 2) - parent.lineWidth / 2, start, end, false)
