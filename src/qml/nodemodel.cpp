@@ -68,6 +68,18 @@ void NodeModel::setVerificationProgress(double new_progress)
     }
 }
 
+void NodeModel::setBlockTimeList(int new_block_time)
+{
+    int sec_in_12_hours = 12 * 60 * 60;
+    double time_since_last_12th_hour = new_block_time % sec_in_12_hours;
+    double ratio_of_12_hour_passed = time_since_last_12th_hour / 12 * 60 * 60;
+    if(!m_block_time_list.isEmpty() && m_block_time_list.back().toDouble() > ratio_of_12_hour_passed) {
+        m_block_time_list.clear();
+    }
+    m_block_time_list.push_back(ratio_of_12_hour_passed);
+    Q_EMIT blockTimeListChanged();
+}
+
 void NodeModel::startNodeInitializionThread()
 {
     Q_EMIT requestedInitialize();
@@ -78,6 +90,7 @@ void NodeModel::initializeResult([[maybe_unused]] bool success, interfaces::Bloc
     // TODO: Handle the `success` parameter,
     setBlockTipHeight(tip_info.block_height);
     setVerificationProgress(tip_info.verification_progress);
+    setBlockTimeList(tip_info.block_time);
 }
 
 void NodeModel::startShutdownPolling()
@@ -107,5 +120,6 @@ void NodeModel::ConnectToBlockTipSignal()
         [this](SynchronizationState state, interfaces::BlockTip tip, double verification_progress) {
             setBlockTipHeight(tip.block_height);
             setVerificationProgress(verification_progress);
+            setBlockTimeList(tip.block_time);
         });
 }
