@@ -71,20 +71,21 @@ void NodeModel::setVerificationProgress(double new_progress)
 void NodeModel::setBlockTimeList(int new_block_time)
 {
     int currentTime = QDateTime::currentDateTime().toSecsSinceEpoch();
+    int sec_in_12_hours = 12 * 60 * 60;
+    int time_at_12th_hour = currentTime - currentTime % sec_in_12_hours;
 
-    if (m_current_time != currentTime) {
-        m_current_time = currentTime;
+    double ratio_of_time_passed_since_12th_hour = (currentTime % sec_in_12_hours) / double(sec_in_12_hours);
+
+    if (m_current_time != ratio_of_time_passed_since_12th_hour) {
+        m_current_time = ratio_of_time_passed_since_12th_hour;
         Q_EMIT currentTimeChanged();
     }
-    int sec_in_12_hours = 12 * 60 * 60;
-
-    int time_at_12th_hour = currentTime - currentTime % sec_in_12_hours;
 
     if (new_block_time < time_at_12th_hour) {
         return;
     }
 
-    double ratio_of_12_hour_passed = (new_block_time - time_at_12th_hour) / sec_in_12_hours;
+    double ratio_of_12_hour_passed = (new_block_time - time_at_12th_hour) / (double)sec_in_12_hours;
     if(!m_block_time_list.isEmpty() && m_block_time_list.back().toDouble() > ratio_of_12_hour_passed) {
         m_block_time_list.clear();
     }
