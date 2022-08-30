@@ -11,7 +11,8 @@ StackView {
     BlockClock {
         id: connectingClock
         anchors.centerIn: parent
-        progress: nodeModel.verificationProgress
+        progress: nodeModel.currentTime
         remainingTime: nodeModel.remainingSyncTime
+        blockList: nodeModel.blockTimeList
     }
 }

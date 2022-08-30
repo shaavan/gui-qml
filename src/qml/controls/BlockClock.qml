@@ -19,6 +19,8 @@ Item {
     property string colorCircle: "#f1d54a"
     property string colorBackground: Theme.color.neutral2
 
+    property variant blockList
+
     property alias beginAnimation: animationArcBegin.enabled
     property alias endAnimation: animationArcEnd.enabled
 
@@ -26,6 +28,7 @@ Item {
 
     onArcBeginChanged: canvas.requestPaint()
     onArcEndChanged: canvas.requestPaint()
+    onBlockListChanged: canvas.requestPaint()
 
     Behavior on arcBegin {
        id: animationArcBegin
@@ -72,6 +75,18 @@ Item {
             ctx.lineWidth = root.lineWidth
             ctx.strokeStyle = root.colorCircle
             ctx.stroke()
+
+            // Paint Block time points
+            for(var i=0; i<blockList.length; i++) {
+                var starts = Math.PI * ((parent.blockList[i] - 0.005) * 360 / 180)
+                var ends = Math.PI * ((parent.blockList[i] + 0.005) * 360 / 180)
+
+                ctx.beginPath();
+                ctx.arc(x, y, (width / 2) - parent.lineWidth / 2, starts, ends, false)
+                ctx.lineWidth = root.lineWidth
+                ctx.strokeStyle = "black";
+                ctx.stroke()
+            }
         }
     }
 
