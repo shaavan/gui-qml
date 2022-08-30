@@ -11,8 +11,12 @@ StackView {
     BlockClock {
         id: connectingClock
         anchors.centerIn: parent
-        progress: nodeModel.currentTime
+        // progress: nodeModel.currentTime
         remainingTime: nodeModel.remainingSyncTime
         blockList: nodeModel.blockTimeList
+    }
+    Timer {
+        interval: 1000; running: true; repeat: true
+        onTriggered: connectingClock.progress = nodeModel.currentTime()
     }
 }
