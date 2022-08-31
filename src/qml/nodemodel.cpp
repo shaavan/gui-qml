@@ -64,6 +64,7 @@ void NodeModel::setVerificationProgress(double new_progress)
 
     if (new_progress != m_verification_progress) {
         m_verification_progress = new_progress;
+        std::cout<<"Current Verification Progress: "<<m_verification_progress<<"\n";
         Q_EMIT verificationProgressChanged();
     }
 }

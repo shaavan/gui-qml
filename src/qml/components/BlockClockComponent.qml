@@ -21,7 +21,7 @@ import "../controls"
 
         states: [
             State {
-                name: "connectingClock"; when: nodeModel.verificationProgress < 1
+                name: "connectingClock"; when: nodeModel.verificationProgress < 0.99
                 PropertyChanges {
                     target: blockClock
                     progress: nodeModel.verificationProgress
@@ -31,17 +31,13 @@ import "../controls"
             },
 
             State {
-                name: "blockClock"; when: nodeModel.verificationProgress = 1
+                name: "blockClock"; when: nodeModel.verificationProgress >= 0.99
                 PropertyChanges {
                     target: blockClock
                     progress: nodeModel.currentTime
-                    remainingTime: nodeModel.remainingSyncTime
+                    remainingTime: -1
                     blockList: nodeModel.blockTimeList
                 }
-                // Timer {
-                //         interval: 1000; running: true; repeat: true
-                //         onTriggered: connectingClock.progress = nodeModel.currentTime()
-                //     }
             }
         ]
     }

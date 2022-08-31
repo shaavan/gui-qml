@@ -11,6 +11,7 @@ Item {
 
     property real progress: 0
     property int remainingTime: 0
+    property string blockClockText: "Latest Block"
 
     property int size: 200
     property real arcBegin: 0
@@ -109,7 +110,7 @@ Item {
         }
         Text {
             Layout.alignment: Qt.AlignCenter
-            text: Math.round(root.remainingTime/60000) > 0 ? Math.round(root.remainingTime/60000) + "mins" : Math.round(root.remainingTime/1000) + "secs"
+            text: root.remainingTime > -1 ? Math.round(root.remainingTime/60000) > 0 ? Math.round(root.remainingTime/60000) + "mins" : Math.round(root.remainingTime/1000) + "secs" : root.blockClockText
             font.family: "Inter"
             font.styleName: "Semi Bold"
             font.pixelSize: 18
