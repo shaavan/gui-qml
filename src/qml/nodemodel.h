@@ -29,6 +29,7 @@ class NodeModel : public QObject
     Q_PROPERTY(int remainingSyncTime READ remainingSyncTime NOTIFY remainingTimeChanged)
     Q_PROPERTY(double verificationProgress READ verificationProgress NOTIFY verificationProgressChanged)
     Q_PROPERTY(QVariantList blockTimeList READ blockTimeList NOTIFY blockTimeListChanged)
+    Q_PROPERTY(double currentTime READ currentTime NOTIFY currentTimeChanged)
 
 public:
     explicit NodeModel(interfaces::Node& node);
@@ -40,8 +41,10 @@ public:
     void setVerificationProgress(double new_progress);
     QVariantList blockTimeList() const { return m_block_time_list; }
     void setBlockTimeList(int new_block_time);
+    double currentTime() const { return m_current_time; }
+    void setCurrentTime();
 
-    Q_INVOKABLE double currentTime();
+    // Q_INVOKABLE double currentTime();
 
     Q_INVOKABLE void startNodeInitializionThread();
 
@@ -58,6 +61,7 @@ Q_SIGNALS:
     void requestedShutdown();
     void verificationProgressChanged();
     void blockTimeListChanged();
+    void currentTimeChanged();
 
 protected:
     void timerEvent(QTimerEvent* event) override;
@@ -68,6 +72,7 @@ private:
     int m_remaining_time{0};
     double m_verification_progress{0.0};
     QVariantList m_block_time_list{0};
+    double m_current_time{0.0};
 
     int m_shutdown_polling_timer_id{0};
 

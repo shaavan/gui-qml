@@ -34,14 +34,14 @@ import "../controls"
                 name: "blockClock"; when: nodeModel.verificationProgress = 1
                 PropertyChanges {
                     target: blockClock
-                    // progress: nodeModel.verificationProgress
+                    progress: nodeModel.currentTime
                     remainingTime: nodeModel.remainingSyncTime
                     blockList: nodeModel.blockTimeList
                 }
-                Timer {
-                        interval: 1000; running: true; repeat: true
-                        onTriggered: connectingClock.progress = nodeModel.currentTime()
-                    }
+                // Timer {
+                //         interval: 1000; running: true; repeat: true
+                //         onTriggered: connectingClock.progress = nodeModel.currentTime()
+                //     }
             }
         ]
     }
