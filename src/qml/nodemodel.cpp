@@ -87,6 +87,16 @@ void NodeModel::setBlockTimeList(int new_block_time)
     Q_EMIT blockTimeListChanged();
 }
 
+void NodeModel::setBlockTimeListInitial(const CBlockIndex* pblockindex)
+{
+    if (pblockindex->nTime < m_current_time) {
+        return;
+    }
+    setBlockTimeListInitial(pblockindex->pprev);
+    m_block_time_list.push_back(pblockindex->nTime);
+    Q_EMIT blockTimeListChanged();
+}
+
 void NodeModel::setCurrentTime()
 {
     int currentTime = QDateTime::currentDateTime().toSecsSinceEpoch();
@@ -110,7 +120,14 @@ void NodeModel::initializeResult([[maybe_unused]] bool success, interfaces::Bloc
     // TODO: Handle the `success` parameter,
     setBlockTipHeight(tip_info.block_height);
     setVerificationProgress(tip_info.verification_progress);
-    setBlockTimeList(tip_info.block_time);
+    setCurrentTime();
+
+    const CBlockIndex* tip;
+    node::NodeContext* context = m_node.context();
+    ChainstateManager* chainman = context->chainman.get();
+    tip = chainman->ActiveChain().Tip();
+
+    setBlockTimeListInitial(tip);
 }
 
 void NodeModel::startShutdownPolling()

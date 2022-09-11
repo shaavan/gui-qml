@@ -5,8 +5,11 @@
 #ifndef BITCOIN_QML_NODEMODEL_H
 #define BITCOIN_QML_NODEMODEL_H
 
+#include <chain.h>
+
 #include <interfaces/handler.h>
 #include <interfaces/node.h>
+#include <node/context.h>
 
 #include <memory>
 
@@ -41,6 +44,7 @@ public:
     void setVerificationProgress(double new_progress);
     QVariantList blockTimeList() const { return m_block_time_list; }
     void setBlockTimeList(int new_block_time);
+    void setBlockTimeListInitial(const CBlockIndex* pblockindex);
     double currentTime() const { return m_current_time; }
     void setCurrentTime();
 
