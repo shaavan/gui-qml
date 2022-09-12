@@ -78,9 +78,9 @@ Item {
             ctx.stroke()
 
             // Paint Block time points
-            for(var i=0; i<blockList.length; i++) {
-                var starts = Math.PI * ((parent.blockList[i] - 0.005) * 360 / 180)
-                var ends = Math.PI * ((parent.blockList[i] + 0.005) * 360 / 180)
+            for (var i=0; i<blockList.length; i++) {
+                var starts = Math.PI * ((parent.blockList[i] - 0.0015) * 360 / 180)
+                var ends = Math.PI * ((parent.blockList[i] + 0.0015) * 360 / 180)
 
                 ctx.beginPath();
                 ctx.arc(x, y, (width / 2) - parent.lineWidth / 2, starts, ends, false)
@@ -102,7 +102,7 @@ Item {
         }
         Text {
             Layout.alignment: Qt.AlignCenter
-            text: Math.round(root.progress * 100) + "%"
+            text: root.remainingTime > -1 ? Math.round(root.progress * 100) + "%" : root.progress
             font.family: "Inter"
             font.styleName: "Semi Bold"
             color: Theme.color.neutral9
