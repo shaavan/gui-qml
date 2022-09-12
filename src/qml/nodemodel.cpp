@@ -93,7 +93,7 @@ void NodeModel::setBlockTimeListInitial(const CBlockIndex* pblockindex)
     int sec_in_12_hours = 12 * 60 * 60;
     int time_at_12th_hour = currentTime - currentTime % sec_in_12_hours;
 
-    std::cout<<"Time: "<<pblockindex->nTime<<"\n"<<"Time at 12th hour: "<<time_at_12th_hour<<"\n";
+    // std::cout<<"Time: "<<pblockindex->nTime<<"\n"<<"Time at 12th hour: "<<time_at_12th_hour<<"\n";
 
     if (pblockindex->nTime < time_at_12th_hour) {
         return;
