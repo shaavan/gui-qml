@@ -64,7 +64,7 @@ void NodeModel::setVerificationProgress(double new_progress)
 
     if (new_progress != m_verification_progress) {
         m_verification_progress = new_progress;
-        std::cout<<"Current Verification Progress: "<<m_verification_progress<<"\n";
+        // std::cout<<"Current Verification Progress: "<<m_verification_progress<<"\n";
         Q_EMIT verificationProgressChanged();
     }
 }
@@ -89,11 +89,17 @@ void NodeModel::setBlockTimeList(int new_block_time)
 
 void NodeModel::setBlockTimeListInitial(const CBlockIndex* pblockindex)
 {
-    if (pblockindex->nTime < m_current_time) {
+    int currentTime = QDateTime::currentDateTime().toSecsSinceEpoch();
+    int sec_in_12_hours = 12 * 60 * 60;
+    int time_at_12th_hour = currentTime - currentTime % sec_in_12_hours;
+
+    std::cout<<"Time: "<<pblockindex->nTime<<"\n"<<"Time at 12th hour: "<<time_at_12th_hour<<"\n";
+
+    if (pblockindex->nTime < time_at_12th_hour) {
         return;
     }
     setBlockTimeListInitial(pblockindex->pprev);
-    m_block_time_list.push_back(pblockindex->nTime);
+    setBlockTimeList(pblockindex->nTime);
     Q_EMIT blockTimeListChanged();
 }
 
@@ -105,7 +111,7 @@ void NodeModel::setCurrentTime()
     double ratio_of_time_passed_since_12th_hour = (currentTime % sec_in_12_hours) / double(sec_in_12_hours);
     if(m_current_time != ratio_of_time_passed_since_12th_hour) {
         m_current_time = ratio_of_time_passed_since_12th_hour;
-        std::cout<<"Current Time: "<<ratio_of_time_passed_since_12th_hour<<"\n";
+        // std::cout<<"Current Time: "<<ratio_of_time_passed_since_12th_hour<<"\n";
         Q_EMIT currentTimeChanged();
     }
 }
@@ -120,7 +126,7 @@ void NodeModel::initializeResult([[maybe_unused]] bool success, interfaces::Bloc
     // TODO: Handle the `success` parameter,
     setBlockTipHeight(tip_info.block_height);
     setVerificationProgress(tip_info.verification_progress);
-    setCurrentTime();
+    // setCurrentTime();
 
     const CBlockIndex* tip;
     node::NodeContext* context = m_node.context();
