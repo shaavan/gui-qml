@@ -84,6 +84,11 @@ void NodeModel::setBlockTimeList(int new_block_time)
         m_block_time_list.clear();
     }
     m_block_time_list.push_back(ratio_of_12_hour_passed);
+    std::cout<<"This is block time vector: \n";
+    for(auto i: m_block_time_list) {
+        std::cout<<i.toDouble()<<" ";
+    }
+    std::cout<<"\n";
     Q_EMIT blockTimeListChanged();
 }
 

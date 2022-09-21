@@ -34,7 +34,7 @@ import "../controls"
                 name: "blockClock"; when: nodeModel.verificationProgress >= 0.99
                 PropertyChanges {
                     target: blockClock
-                    progress: nodeModel.blockTipHeight
+                    progress: nodeModel.currentTime
                     remainingTime: -1
                     blockList: nodeModel.blockTimeList
                 }

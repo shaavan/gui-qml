@@ -21,6 +21,7 @@ Item {
     property string colorBackground: Theme.color.neutral2
 
     property variant blockList
+    property variant colorList: ["#EC5445", "#ED6E46", "#EE8847", "#EFA148", "#F0BB49", "#F1D54A"]
 
     property alias beginAnimation: animationArcBegin.enabled
     property alias endAnimation: animationArcEnd.enabled
@@ -70,24 +71,47 @@ Item {
             ctx.strokeStyle = root.colorBackground
             ctx.stroke()
 
-            // Paint foreground arc
-            ctx.beginPath();
-            ctx.arc(x, y, (width / 2) - parent.lineWidth / 2, start, end, false)
-            ctx.lineWidth = root.lineWidth
-            ctx.strokeStyle = root.colorCircle
-            ctx.stroke()
+            // // Paint foreground arc
+            // ctx.beginPath();
+            // ctx.arc(x, y, (width / 2) - parent.lineWidth / 2, start, end, false)
+            // ctx.lineWidth = root.lineWidth
+            // ctx.strokeStyle = root.colorCircle
+            // ctx.stroke()
 
+            // // Paint Block time points
+            // for (var i=0; i<blockList.length; i++) {
+            //     var starts = Math.PI * ((parent.blockList[i] - del) * 360 / 180)
+            //     var ends = Math.PI * ((parent.blockList[i] + del) * 360 / 180)
+
+            //     ctx.beginPath();
+            //     ctx.arc(x, y, (width / 2) - parent.lineWidth / 2, starts, ends, false)
+            //     ctx.lineWidth = root.lineWidth
+            //     ctx.strokeStyle = "black";
+            //     ctx.stroke()
+            // }
+
+            var del = 0.0005
             // Paint Block time points
-            for (var i=0; i<blockList.length; i++) {
-                var starts = Math.PI * ((parent.blockList[i] - 0.0015) * 360 / 180)
-                var ends = Math.PI * ((parent.blockList[i] + 0.0015) * 360 / 180)
-
+            for (var i=0; i<blockList.length - 1; i++) {
+                var starts = Math.PI * ((parent.blockList[i] + del) * 360 / 180)
+                var ends = Math.PI * ((parent.blockList[i + 1] - del) * 360 / 180)
+                var conf = blockList.length - i - 1
                 ctx.beginPath();
                 ctx.arc(x, y, (width / 2) - parent.lineWidth / 2, starts, ends, false)
                 ctx.lineWidth = root.lineWidth
-                ctx.strokeStyle = "black";
+                ctx.strokeStyle = conf > 5 ? colorList[5] : colorList[conf]
                 ctx.stroke()
             }
+
+            // Print last segment
+            var starts = Math.PI * ((parent.blockList[-1] + del) * 360 / 180)
+            var ends = Math.PI * (progress * 360 / 180)
+
+            // ctx.beginPath();
+            ctx.arc(x, y, (width / 2) - parent.lineWidth / 2, starts, ends, false)
+            ctx.lineWidth = root.lineWidth
+            ctx.strokeStyle = colorList[0];
+
         }
     }
 
