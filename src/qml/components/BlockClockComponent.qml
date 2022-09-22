@@ -11,6 +11,7 @@ import "../controls"
     BlockClock {
         id: blockClock
         anchors.centerIn: parent
+        synced: nodeModel.verificationProgress > 0.99
         // progress: nodeModel.verificationProgress
         // remainingTime: nodeModel.remainingSyncTime
         // blockList: nodeModel.blockTimeList
@@ -21,21 +22,29 @@ import "../controls"
 
         states: [
             State {
-                name: "connectingClock"; when: nodeModel.verificationProgress < 0.99
+                name: "connectingClock"; when: !synced
                 PropertyChanges {
                     target: blockClock
-                    progress: nodeModel.verificationProgress
-                    remainingTime: nodeModel.remainingSyncTime
-                    blockList: []
+                    // progress: nodeModel.verificationProgress
+                    // remainingTime: nodeModel.remainingSyncTime
+
+                    ringProgress: nodeModel.verificationProgress
+                    header: Math.round(ringProgress * 100) + "%"
+                    subText: Math.round(nodeModel.remainingSyncTime/60000) > 0 ? Math.round(nodeModel.remainingSyncTime/60000) + "mins" : Math.round(nodeModel.remainingSyncTime/1000) + "secs" 
                 }
             },
 
             State {
-                name: "blockClock"; when: nodeModel.verificationProgress >= 0.99
+                name: "blockClock"; when: synced
                 PropertyChanges {
                     target: blockClock
-                    progress: nodeModel.currentTime
-                    remainingTime: -1
+                    // progress: nodeModel.currentTime
+                    // remainingTime: -1
+                    
+
+                    ringProgress: nodeModel.currentTime
+                    header: nodeModel.blockTipHeight
+                    subText: "Latest Block"
                     blockList: nodeModel.blockTimeList
                 }
             }
