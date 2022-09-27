@@ -45,8 +45,8 @@ public:
     QVariantList blockTimeList() const { return m_block_time_list; }
     bool setBlockTimeList(int new_block_time);
     void setBlockTimeListInitial(const CBlockIndex* pblockindex);
-    double currentTime() const { return m_current_time; }
-    void setCurrentTime();
+    double currentTimeRatio() const { return m_current_time_ratio; }
+    void setCurrentTimeRatio();
 
     // Q_INVOKABLE double currentTime();
 
@@ -76,7 +76,7 @@ private:
     int m_remaining_time{0};
     double m_verification_progress{0.0};
     QVariantList m_block_time_list{0};
-    double m_current_time{0.0};
+    double m_current_time_ratio{0.0};
 
     int m_shutdown_polling_timer_id{0};
 

@@ -96,11 +96,11 @@ bool NodeModel::setBlockTimeList(int new_block_time)
 
 void NodeModel::setBlockTimeListInitial(const CBlockIndex* pblockindex)
 {
-    // int currentTime = QDateTime::currentDateTime().toSecsSinceEpoch();
-    // int sec_in_12_hours = 12 * 60 * 60;
-    // int time_at_12th_hour = currentTime - currentTime % sec_in_12_hours;
+    int currentTime = QDateTime::currentDateTime().toSecsSinceEpoch();
+    int sec_in_12_hours = 12 * 60 * 60;
+    int time_at_12th_hour = currentTime - currentTime % sec_in_12_hours;
 
-    // std::cout<<"Time: "<<pblockindex->nTime<<"\n"<<"Time at 12th hour: "<<time_at_12th_hour<<"\n";
+    std::cout<<"Time: "<<pblockindex->nTime<<"\n"<<"Time at 12th hour: "<<time_at_12th_hour<<"\n";
 
     // if (pblockindex->nTime < time_at_12th_hour) {
     //     return;
@@ -114,17 +114,17 @@ void NodeModel::setBlockTimeListInitial(const CBlockIndex* pblockindex)
     Q_EMIT blockTimeListChanged();
 }
 
-void NodeModel::setCurrentTime()
+void NodeModel::setCurrentTimeRatio()
 {
     int currentTime = QDateTime::currentDateTime().toSecsSinceEpoch();
     int sec_in_12_hours = 12 * 60 * 60;
 
     double ratio_of_time_passed_since_12th_hour = (currentTime % sec_in_12_hours) / double(sec_in_12_hours);
-    if(m_current_time != ratio_of_time_passed_since_12th_hour) {
-        if (m_current_time > ratio_of_time_passed_since_12th_hour) {
+    if(m_current_time_ratio != ratio_of_time_passed_since_12th_hour) {
+        if (m_current_time_ratio > ratio_of_time_passed_since_12th_hour) {
             m_block_time_list.clear();
         }
-        m_current_time = ratio_of_time_passed_since_12th_hour;
+        m_current_time_ratio = ratio_of_time_passed_since_12th_hour;
         // std::cout<<"Current Time: "<<ratio_of_time_passed_since_12th_hour<<"\n";
         Q_EMIT currentTimeChanged();
     }

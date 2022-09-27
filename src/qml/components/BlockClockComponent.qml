@@ -17,7 +17,7 @@ import "../controls"
         // blockList: nodeModel.blockTimeList
         // Timer {
         //     interval: 1000; running: true; repeat: true
-        //     onTriggered: connectingClock.progress = nodeModel.currentTime()
+        //     onTriggered: connectingClock.progress = nodeModel.currentTimeRatio()
         // }
 
         states: [
@@ -59,7 +59,7 @@ import "../controls"
     //     blockList: nodeModel.blockTimeList
     //     Timer {
     //         interval: 1000; running: true; repeat: true
-    //         onTriggered: connectingClock.progress = nodeModel.currentTime()
+    //         onTriggered: connectingClock.progress = nodeModel.currentTimeRatio()
     //     }
     // }
 // }

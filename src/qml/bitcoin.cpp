@@ -168,7 +168,7 @@ int QmlGuiMain(int argc, char* argv[])
     QObject::connect(&node_model, &NodeModel::requestedShutdown, &init_executor, &InitExecutor::shutdown);
     QObject::connect(&init_executor, &InitExecutor::initializeResult, &node_model, &NodeModel::initializeResult);
     QObject::connect(&init_executor, &InitExecutor::shutdownResult, qGuiApp, &QGuiApplication::quit, Qt::QueuedConnection);
-    QObject::connect(timer, &QTimer::timeout, &node_model, &NodeModel::setCurrentTime);
+    QObject::connect(timer, &QTimer::timeout, &node_model, &NodeModel::setCurrentTimeRatio);
 
     timer->start(1000);
     // QObject::connect(&init_executor, &InitExecutor::runawayException, &node_model, &NodeModel::handleRunawayException);
