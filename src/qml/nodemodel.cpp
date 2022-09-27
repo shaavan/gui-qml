@@ -64,7 +64,7 @@ void NodeModel::setVerificationProgress(double new_progress)
 
     if (new_progress != m_verification_progress) {
         m_verification_progress = new_progress;
-        std::cout<<"Current Verification Progress: "<<m_verification_progress<<"\n";
+        // std::cout<<"Current Verification Progress: "<<m_verification_progress<<"\n";
         Q_EMIT verificationProgressChanged();
     }
 }
@@ -85,22 +85,22 @@ bool NodeModel::setBlockTimeList(int new_block_time)
     //     m_block_time_list.clear();
     // }
     m_block_time_list.push_back(ratio_of_12_hour_passed);
-    std::cout<<"This is block time vector: \n";
-    for(auto i: m_block_time_list) {
-        std::cout<<i.toDouble()<<" ";
-    }
-    std::cout<<"\n";
+    // std::cout<<"This is block time vector: \n";
+    // for(auto i: m_block_time_list) {
+    //     std::cout<<i.toDouble()<<" ";
+    // }
+    // std::cout<<"\n";
     Q_EMIT blockTimeListChanged();
     return true;
 }
 
 void NodeModel::setBlockTimeListInitial(const CBlockIndex* pblockindex)
 {
-    int currentTime = QDateTime::currentDateTime().toSecsSinceEpoch();
-    int sec_in_12_hours = 12 * 60 * 60;
-    int time_at_12th_hour = currentTime - currentTime % sec_in_12_hours;
+    // int currentTime = QDateTime::currentDateTime().toSecsSinceEpoch();
+    // int sec_in_12_hours = 12 * 60 * 60;
+    // int time_at_12th_hour = currentTime - currentTime % sec_in_12_hours;
 
-    std::cout<<"Time: "<<pblockindex->nTime<<"\n"<<"Time at 12th hour: "<<time_at_12th_hour<<"\n";
+    // std::cout<<"Time: "<<pblockindex->nTime<<"\n"<<"Time at 12th hour: "<<time_at_12th_hour<<"\n";
 
     // if (pblockindex->nTime < time_at_12th_hour) {
     //     return;
