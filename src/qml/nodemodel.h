@@ -43,7 +43,7 @@ public:
     double verificationProgress() const { return m_verification_progress; }
     void setVerificationProgress(double new_progress);
     QVariantList blockTimeList() const { return m_block_time_list; }
-    void setBlockTimeList(int new_block_time);
+    bool setBlockTimeList(int new_block_time);
     void setBlockTimeListInitial(const CBlockIndex* pblockindex);
     double currentTime() const { return m_current_time; }
     void setCurrentTime();
