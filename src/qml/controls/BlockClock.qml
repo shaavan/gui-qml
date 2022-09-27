@@ -107,27 +107,36 @@ Item {
             //     ctx.stroke()
             // }
             else {
-                var del = 0.0001
+                var del = 0.002
                 // Paint Block time points
-                for (var i=0; i<blockList.length - 1; i++) {
-                    var starts = Math.PI * ((parent.blockList[i] + del) * 360 / 180)
-                    var ends = Math.PI * ((parent.blockList[i + 1] - del) * 360 / 180)
+                for (var i=0; i<parent.blockList.length - 1; i++) {
+                    var starts = Math.PI * ((parent.blockList[i]) * 360 / 180)
+                    var ends = Math.PI * ((parent.blockList[i + 1]) * 360 / 180)
                     var conf = blockList.length - i - 1
                     ctx.beginPath();
                     ctx.arc(x, y, (width / 2) - parent.lineWidth / 2, starts, ends, false)
                     ctx.lineWidth = root.lineWidth
                     ctx.strokeStyle = conf > 5 ? colorList[5] : colorList[conf]
                     ctx.stroke()
+
+                    // Paint dark segments
+                    var start = Math.PI * ((parent.blockList[i + 1] - del) * 360 / 180)
+                    ctx.beginPath();
+                    ctx.arc(x, y, (width / 2) - parent.lineWidth/2, start, ends, false)
+                    ctx.lineWidth = 4
+                    ctx.strokeStyle = root.colorBackground
+                    ctx.stroke();
                 }
 
                 // Print last segment
-                var starts = Math.PI * ((parent.blockList[-1] + del) * 360 / 180)
+                var starts = Math.PI * ((parent.blockList[parent.blockList.length - 1]) * 360 / 180)
                 var ends = Math.PI * (ringProgress * 360 / 180)
 
-                // ctx.beginPath();
+                ctx.beginPath();
                 ctx.arc(x, y, (width / 2) - parent.lineWidth / 2, starts, ends, false)
                 ctx.lineWidth = root.lineWidth
                 ctx.strokeStyle = colorList[0];
+                ctx.stroke()
             }
         }
     }
