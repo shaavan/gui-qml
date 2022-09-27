@@ -34,6 +34,7 @@
 #include <QQuickWindow>
 #include <QString>
 #include <QStyleHints>
+#include <QTimer>
 #include <QUrl>
 
 QT_BEGIN_NAMESPACE
@@ -162,10 +163,14 @@ int QmlGuiMain(int argc, char* argv[])
 
     NodeModel node_model{*node};
     InitExecutor init_executor{*node};
+    QTimer *timer = new QTimer(&node_model);
     QObject::connect(&node_model, &NodeModel::requestedInitialize, &init_executor, &InitExecutor::initialize);
     QObject::connect(&node_model, &NodeModel::requestedShutdown, &init_executor, &InitExecutor::shutdown);
     QObject::connect(&init_executor, &InitExecutor::initializeResult, &node_model, &NodeModel::initializeResult);
     QObject::connect(&init_executor, &InitExecutor::shutdownResult, qGuiApp, &QGuiApplication::quit, Qt::QueuedConnection);
+    QObject::connect(timer, &QTimer::timeout, &node_model, &NodeModel::setCurrentTimeRatio);
+
+    timer->start(1000);
     // QObject::connect(&init_executor, &InitExecutor::runawayException, &node_model, &NodeModel::handleRunawayException);
 
     qGuiApp->setQuitOnLastWindowClosed(false);
