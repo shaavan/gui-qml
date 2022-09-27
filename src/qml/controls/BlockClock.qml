@@ -9,10 +9,6 @@ Item {
     width: size
     height: size
 
-    // property real ringProgress: 0
-    // property int remainingTime: 0
-    // property string blockClockText: "Latest Block"
-
     property real ringProgress: 0
     property string header
     property string subText
@@ -46,7 +42,7 @@ Item {
            easing.type: Easing.InOutCubic
        }
     }
-    
+
     Behavior on arcEnd {
        id: animationArcEnd
        enabled: true
@@ -66,8 +62,7 @@ Item {
             var ctx = getContext("2d")
             var x = width / 2
             var y = height / 2
-            // var start = Math.PI * (parent.arcBegin / 180)
-            // var end = Math.PI * (parent.arcEnd / 180)
+
             ctx.reset()
 
             // Paint background
@@ -88,24 +83,6 @@ Item {
                 ctx.stroke()
             }
 
-            // // Paint foreground arc
-            // ctx.beginPath();
-            // ctx.arc(x, y, (width / 2) - parent.lineWidth / 2, start, end, false)
-            // ctx.lineWidth = root.lineWidth
-            // ctx.strokeStyle = root.colorCircle
-            // ctx.stroke()
-
-            // // Paint Block time points
-            // for (var i=0; i<blockList.length; i++) {
-            //     var starts = Math.PI * ((parent.blockList[i] - del) * 360 / 180)
-            //     var ends = Math.PI * ((parent.blockList[i] + del) * 360 / 180)
-
-            //     ctx.beginPath();
-            //     ctx.arc(x, y, (width / 2) - parent.lineWidth / 2, starts, ends, false)
-            //     ctx.lineWidth = root.lineWidth
-            //     ctx.strokeStyle = "black";
-            //     ctx.stroke()
-            // }
             else {
                 var del = 0.002
                 // Paint Block time points
@@ -152,7 +129,6 @@ Item {
         }
         Text {
             Layout.alignment: Qt.AlignCenter
-            // text: root.remainingTime > -1 ? Math.round(root.ringProgress * 100) + "%" : root.ringProgress
             text: root.header
             font.family: "Inter"
             font.styleName: "Semi Bold"
@@ -161,7 +137,6 @@ Item {
         }
         Text {
             Layout.alignment: Qt.AlignCenter
-            // text: root.remainingTime > -1 ? Math.round(root.remainingTime/60000) > 0 ? Math.round(root.remainingTime/60000) + "mins" : Math.round(root.remainingTime/1000) + "secs" : root.blockClockText
             text: root.subText
             font.family: "Inter"
             font.styleName: "Semi Bold"

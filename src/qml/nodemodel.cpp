@@ -64,7 +64,6 @@ void NodeModel::setVerificationProgress(double new_progress)
 
     if (new_progress != m_verification_progress) {
         m_verification_progress = new_progress;
-        // std::cout<<"Current Verification Progress: "<<m_verification_progress<<"\n";
         Q_EMIT verificationProgressChanged();
     }
 }
@@ -80,37 +79,19 @@ bool NodeModel::setBlockTimeList(int new_block_time)
     }
 
     double ratio_of_12_hour_passed = (new_block_time - time_at_12th_hour) / (double)sec_in_12_hours;
-    // if(!m_block_time_list.isEmpty() && m_block_time_list.back().toDouble() > ratio_of_12_hour_passed) {
-    //     std::cout<<"Back of list: "<< m_block_time_list.back().toDouble()<<"\n"<<"Ratio of 12 hour passed: "<<ratio_of_12_hour_passed<<"\n";
-    //     m_block_time_list.clear();
-    // }
+
     m_block_time_list.push_back(ratio_of_12_hour_passed);
-    // std::cout<<"This is block time vector: \n";
-    // for(auto i: m_block_time_list) {
-    //     std::cout<<i.toDouble()<<" ";
-    // }
-    // std::cout<<"\n";
     Q_EMIT blockTimeListChanged();
     return true;
 }
 
 void NodeModel::setBlockTimeListInitial(const CBlockIndex* pblockindex)
 {
-    // int currentTime = QDateTime::currentDateTime().toSecsSinceEpoch();
-    // int sec_in_12_hours = 12 * 60 * 60;
-    // int time_at_12th_hour = currentTime - currentTime % sec_in_12_hours;
-
-    // std::cout<<"Time: "<<pblockindex->nTime<<"\n"<<"Time at 12th hour: "<<time_at_12th_hour<<"\n";
-
-    // if (pblockindex->nTime < time_at_12th_hour) {
-    //     return;
-    // }
     if (setBlockTimeList(pblockindex->nTime)) {
         setBlockTimeListInitial(pblockindex->pprev);
         return;
     }
     std::reverse(m_block_time_list.begin()+1, m_block_time_list.end());
-    // setBlockTimeList(pblockindex->nTime);
     Q_EMIT blockTimeListChanged();
 }
 
@@ -125,7 +106,6 @@ void NodeModel::setCurrentTimeRatio()
             m_block_time_list.clear();
         }
         m_current_time_ratio = ratio_of_time_passed_since_12th_hour;
-        // std::cout<<"Current Time: "<<ratio_of_time_passed_since_12th_hour<<"\n";
         Q_EMIT currentTimeChanged();
     }
 }
@@ -140,7 +120,6 @@ void NodeModel::initializeResult([[maybe_unused]] bool success, interfaces::Bloc
     // TODO: Handle the `success` parameter,
     setBlockTipHeight(tip_info.block_height);
     setVerificationProgress(tip_info.verification_progress);
-    // setCurrentTime();
 
     const CBlockIndex* tip;
     node::NodeContext* context = m_node.context();

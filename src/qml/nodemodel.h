@@ -48,8 +48,6 @@ public:
     double currentTimeRatio() const { return m_current_time_ratio; }
     void setCurrentTimeRatio();
 
-    // Q_INVOKABLE double currentTime();
-
     Q_INVOKABLE void startNodeInitializionThread();
 
     void startShutdownPolling();
