@@ -320,6 +320,7 @@ QML_RES_QML = \
   qml/components/StorageLocations.qml \
   qml/components/StorageOptions.qml \
   qml/components/StorageSettings.qml \
+  qml/controls/BlockClock.qml \
   qml/controls/ContinueButton.qml \
   qml/controls/ExternalLink.qml \
   qml/controls/Header.qml \
