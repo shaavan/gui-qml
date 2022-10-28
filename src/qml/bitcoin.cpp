@@ -12,6 +12,7 @@
 #include <node/interface_ui.h>
 #include <noui.h>
 #include <qml/appmode.h>
+#include <qml/chainmodel.h>
 #include <qml/imageprovider.h>
 #include <qml/nodemodel.h>
 #include <qml/util.h>
@@ -184,6 +185,9 @@ int QmlGuiMain(int argc, char* argv[])
     engine.addImageProvider(QStringLiteral("images"), new ImageProvider{network_style.data()});
 
     engine.rootContext()->setContextProperty("nodeModel", &node_model);
+
+    ChainModel chain_model;
+    engine.rootContext()->setContextProperty("chainModel", &chain_model);
 
 #ifdef __ANDROID__
     AppMode app_mode(AppMode::MOBILE);
