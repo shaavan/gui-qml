@@ -11,5 +11,5 @@ ChainModel::ChainModel(interfaces::chain& chain)
 {
 }
 
-ChainModel::setTimeList(int new_time) {
+ChainModel::setTimeRatioList(int new_time) {
 }

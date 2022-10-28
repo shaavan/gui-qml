@@ -14,19 +14,19 @@ class Chain;
 class ChainModel : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(QVariantList timeList READ timeList NOTIFY timeListChanged)
+    Q_PROPERTY(QVariantList timeRatioList READ timeRatioList NOTIFY timeRatioListChanged)
 
 public:
     explicit ChainModel(interfaces::Chain& chain);
 
-    QVariantList timeList() const { return m_time_list; }
-    void setTimeList(int new_time)
+    QVariantList timeRatioList() const { return m_time_ratio_list; };
+    void setTimeRatioList(int new_time);
 
 Q_SIGNALS:
-    void timeListChanged();
+    void timeRatioListChanged();
 
 private:
-    QVariantList m_block_time_list{0};
+    QVariantList m_time_ratio_list{0};
 
     interfaces::Chain& m_chain;
 };
