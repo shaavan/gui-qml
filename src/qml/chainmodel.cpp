@@ -6,7 +6,10 @@
 
 #include <interfaces/chain.h>
 
-Chain::Chain(interfaces::chain& chain)
+ChainModel::ChainModel(interfaces::chain& chain)
     : m_chain{chain}
 {
+}
+
+ChainModel::setTimeList(int new_time) {
 }

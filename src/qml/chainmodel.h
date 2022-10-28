@@ -14,11 +14,20 @@ class Chain;
 class ChainModel : public QObject
 {
     Q_OBJECT
+    Q_PROPERTY(QVariantList timeList READ timeList NOTIFY timeListChanged)
 
 public:
     explicit ChainModel(interfaces::Chain& chain);
 
+    QVariantList timeList() const { return m_time_list; }
+    void setTimeList(int new_time)
+
+Q_SIGNALS:
+    void timeListChanged();
+
 private:
+    QVariantList m_block_time_list{0};
+
     interfaces::Chain& m_chain;
 };
 
