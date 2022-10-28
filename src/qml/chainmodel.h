@@ -8,8 +8,11 @@
 #include <QObject>
 
 namespace interfaces {
+class FoundBlock;
 class Chain;
 }
+
+static const SECS_IN_12_HOURS = 43200;
 
 class ChainModel : public QObject
 {
@@ -21,6 +24,10 @@ public:
 
     QVariantList timeRatioList() const { return m_time_ratio_list; };
     void setTimeRatioList(int new_time);
+
+    void timestampAtMeridian();
+
+    void setTimeRatioListInitial();
 
 Q_SIGNALS:
     void timeRatioListChanged();
