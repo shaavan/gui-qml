@@ -155,6 +155,7 @@ int QmlGuiMain(int argc, char* argv[])
     GUIUtil::LogQtInfo();
 
     std::unique_ptr<interfaces::Node> node = init->makeNode();
+    std::unique_ptr<interfaces::Chain> chain = init->makeChain();
     if (!node->baseInitialize()) {
         // A dialog with detailed error will have been shown by InitError().
         return EXIT_FAILURE;
@@ -186,7 +187,7 @@ int QmlGuiMain(int argc, char* argv[])
 
     engine.rootContext()->setContextProperty("nodeModel", &node_model);
 
-    ChainModel chain_model;
+    ChainModel chain_model{*chain};
     engine.rootContext()->setContextProperty("chainModel", &chain_model);
 
 #ifdef __ANDROID__
