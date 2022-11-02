@@ -14,6 +14,9 @@ ChainModel::ChainModel(interfaces::Chain& chain)
 
 void ChainModel::setTimeRatioList(int new_time)
 {
+    int timeAtMeridian = timestampAtMeridian();
+
+    m_time_ratio_list.push_back(double(new_time - timeAtMeridian) / SECS_IN_12_HOURS);
 }
 
 int ChainModel::timestampAtMeridian()

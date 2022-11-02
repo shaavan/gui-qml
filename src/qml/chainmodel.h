@@ -29,7 +29,7 @@ public:
     void setTimeRatioList(int new_time);
 
     int timestampAtMeridian();
-
+    
     void setTimeRatioListInitial();
 
 Q_SIGNALS:
