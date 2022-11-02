@@ -8,6 +8,7 @@
 #include <interfaces/chain.h>
 
 #include <QObject>
+#include <QTimer>
 #include <QVariant>
 
 namespace interfaces {
@@ -29,14 +30,17 @@ public:
     void setTimeRatioList(int new_time);
 
     int timestampAtMeridian();
-    
     void setTimeRatioListInitial();
+
+    void setCurrentTimeRatio();
 
 Q_SIGNALS:
     void timeRatioListChanged();
 
 private:
     QVariantList m_time_ratio_list{0.0};
+
+    QTimer *timer;
 
     interfaces::Chain& m_chain;
 };

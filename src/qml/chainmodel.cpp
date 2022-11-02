@@ -6,10 +6,18 @@
 
 #include <QDateTime>
 #include <QTime>
+#include <QThread>
 
 ChainModel::ChainModel(interfaces::Chain& chain)
     : m_chain{chain}
 {
+    timer = new QTimer(this);
+    connect(timer, &QTimer::timeout, this, &ChainModel::setCurrentTimeRatio);
+    timer->start(1000);
+
+    QThread *timer_thread = new QThread;
+    timer->moveToThread(timer_thread);
+    timer_thread->start();
 }
 
 void ChainModel::setTimeRatioList(int new_time)
@@ -46,4 +54,15 @@ void ChainModel::setTimeRatioListInitial()
     }
 
     Q_EMIT timeRatioListChanged();
+}
+
+void ChainModel::setCurrentTimeRatio()
+{
+    int secsSinceMeridian = (QTime::currentTime().msecsSinceStartOfDay() / 1000) % SECS_IN_12_HOURS;
+    int currentTimeRatio = double(secsSinceMeridian) / SECS_IN_12_HOURS;
+
+    if (currentTimeRatio < m_time_ratio_list[0].toDouble()) { //That means time has crossed a meridian
+        m_time_ratio_list.erase(m_time_ratio_list.begin() + 1, m_time_ratio_list.end());
+    }
+    m_time_ratio_list[0] = currentTimeRatio;
 }
