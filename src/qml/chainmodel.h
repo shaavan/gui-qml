@@ -6,6 +6,7 @@
 #define BITCOIN_QML_CHAIN_MODEL_H
 
 #include <interfaces/chain.h>
+#include <interfaces/handler.h>
 
 #include <QObject>
 #include <QTimer>
@@ -33,6 +34,9 @@ public:
     void setTimeRatioListInitial();
 
     void setCurrentTimeRatio();
+
+public Q_SLOTS:
+    void initializeResult(bool success, interfaces::BlockAndHeaderTipInfo tip_info);
 
 Q_SIGNALS:
     void timeRatioListChanged();
