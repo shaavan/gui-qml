@@ -71,3 +71,15 @@ void ChainModel::initializeResult([[maybe_unused]] bool success, [[maybe_unused]
 {
     setTimeRatioListInitial();
 }
+
+void ChainModel::ConnectToBlockTipSignal()
+{
+    assert(!m_handler_notify_block_tip);
+
+    m_handler_notify_block_tip = m_node.handleNotifyBlockTip(
+        [this](SynchronizationState state, interfaces::BlockTip tip, double verification_progress) {
+            QMetaObject::invokeMethod(this, [=] {
+                setBlockTimeList(tip.block_time);
+            });
+        });
+}

@@ -43,6 +43,9 @@ private:
     QTimer *timer;
 
     interfaces::Chain& m_chain;
+    std::unique_ptr<interfaces::Handler> m_handler_notify_block_tip;
+
+    void ConnectToBlockTipSignal();
 };
 
 #endif // BITCOIN_QML_CHAIN_MODEL_H
