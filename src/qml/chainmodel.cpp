@@ -66,3 +66,8 @@ void ChainModel::setCurrentTimeRatio()
     }
     m_time_ratio_list[0] = currentTimeRatio;
 }
+
+void ChainModel::initializeResult([[maybe_unused]] bool success, [[maybe_unused]]interfaces::BlockAndHeaderTipInfo tip_info)
+{
+    setTimeRatioListInitial();
+}
