@@ -19,6 +19,8 @@ OptionsQmlModel::OptionsQmlModel(interfaces::Node& node)
     int64_t prune_value{SettingToInt(m_node.getPersistentSetting("prune"), 0)};
     m_prune = (prune_value > 1);
     m_prune_size_gb = m_prune ? PruneMiBtoGB(prune_value) : DEFAULT_PRUNE_TARGET_GB;
+
+    m_listen = SettingToBool(m_node.getPersistentSetting("listen"), 0);
 }
 
 void OptionsQmlModel::setPrune(bool new_prune)
@@ -43,4 +45,13 @@ util::SettingsValue OptionsQmlModel::pruneSetting() const
 {
     assert(!m_prune || m_prune_size_gb >= 1);
     return m_prune ? PruneGBtoMiB(m_prune_size_gb) : 0;
+}
+
+void OptionsQmlModel::setListen(bool new_listen)
+{
+    if(m_listen != new_listen) {
+        m_listen = new_listen;
+        m_node.updateRwSetting("listen", new_listen);
+        Q_EMIT listenChanged(new_listen);
+    }
 }

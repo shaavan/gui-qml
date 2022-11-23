@@ -19,6 +19,7 @@ class OptionsQmlModel : public QObject
     Q_OBJECT
     Q_PROPERTY(bool prune READ prune WRITE setPrune NOTIFY pruneChanged)
     Q_PROPERTY(int pruneSizeGB READ pruneSizeGB WRITE setPruneSizeGB NOTIFY pruneSizeGBChanged)
+    Q_PROPERTY(bool listen READ listen WRITE setListen NOTIFY listenChanged)
 
 public:
     explicit OptionsQmlModel(interfaces::Node& node);
@@ -27,10 +28,13 @@ public:
     void setPrune(bool new_prune);
     int pruneSizeGB() const { return m_prune_size_gb; }
     void setPruneSizeGB(int new_prune_size);
+    bool listen() const { return m_listen; }
+    void setListen(bool new_listen);
 
 Q_SIGNALS:
     void pruneChanged(bool new_prune);
     void pruneSizeGBChanged(int new_prune_size_gb);
+    void listenChanged(bool new_listen);
 
 private:
     interfaces::Node& m_node;
@@ -38,6 +42,7 @@ private:
     // Properties that are exposed to QML.
     bool m_prune;
     int m_prune_size_gb;
+    bool m_listen;
 
     util::SettingsValue pruneSetting() const;
 };
