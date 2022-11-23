@@ -187,7 +187,7 @@ int QmlGuiMain(int argc, char* argv[])
     engine.rootContext()->setContextProperty("nodeModel", &node_model);
 
     OptionsQmlModel options_model{*node};
-    engine.rootContext()->setContextProperty("options", &options_model);
+    qmlRegisterSingletonInstance<OptionsQmlModel>("org.bitcoincore.qt", 1, 0, "OptionsModel", &options_model);
 
 #ifdef __ANDROID__
     AppMode app_mode(AppMode::MOBILE);

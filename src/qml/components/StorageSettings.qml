@@ -5,6 +5,7 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.15
+import org.bitcoincore.qt 1.0
 import "../controls"
 
 ColumnLayout {
@@ -13,16 +14,16 @@ ColumnLayout {
         Layout.fillWidth: true
         header: qsTr("Store recent blocks only")
         actionItem: OptionSwitch {
-            checked: options.prune
-            onToggled: options.prune = checked
+            checked: OptionsModel.prune
+            onToggled: OptionsModel.prune = checked
         }
     }
     Setting {
         Layout.fillWidth: true
         header: qsTr("Storage limit")
         actionItem: ValueInput {
-            description: options.pruneSizeGB
-            onEditingFinished: options.pruneSizeGB = parseInt(text)
+            description: OptionsModel.pruneSizeGB
+            onEditingFinished: OptionsModel.pruneSizeGB = parseInt(text)
         }
     }
     Setting {
