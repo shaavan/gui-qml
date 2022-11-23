@@ -5,6 +5,7 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.15
+import org.bitcoincore.qt 1.0
 import "../controls"
 
 ColumnLayout {
@@ -13,7 +14,10 @@ ColumnLayout {
         Layout.fillWidth: true
         header: qsTr("Enable listening")
         description: qsTr("Allows incoming connections")
-        actionItem: OptionSwitch {}
+        actionItem: OptionSwitch {
+            checked: OptionsModel.listen
+            onToggled: OptionsModel.listen = checked
+        }
     }
     Setting {
         Layout.fillWidth: true
