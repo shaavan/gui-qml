@@ -190,6 +190,9 @@ int QmlGuiMain(int argc, char* argv[])
     ChainModel chain_model{*chain};
     engine.rootContext()->setContextProperty("chainModel", &chain_model);
 
+    QObject::connect(&node_model, &NodeModel::setTimeRatioList, &chain_model, &ChainModel::setTimeRatioList);
+    QObject::connect(&node_model, &NodeModel::setTimeRatioListInitial, &chain_model, &ChainModel::setTimeRatioListInitial);
+
 #ifdef __ANDROID__
     AppMode app_mode(AppMode::MOBILE);
 #else

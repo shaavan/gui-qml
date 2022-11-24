@@ -49,6 +49,9 @@ Q_SIGNALS:
     void requestedShutdown();
     void verificationProgressChanged();
 
+    void setTimeRatioList(int new_time);
+    void setTimeRatioListInitial();
+
 protected:
     void timerEvent(QTimerEvent* event) override;
 

@@ -27,12 +27,14 @@ public:
     explicit ChainModel(interfaces::Chain& chain);
 
     QVariantList timeRatioList() const { return m_time_ratio_list; };
-    void setTimeRatioList(int new_time);
 
     int timestampAtMeridian();
-    void setTimeRatioListInitial();
 
     void setCurrentTimeRatio();
+
+public Q_SLOTS:
+    void setTimeRatioList(int new_time);
+    void setTimeRatioListInitial();
 
 Q_SIGNALS:
     void timeRatioListChanged();

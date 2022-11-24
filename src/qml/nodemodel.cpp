@@ -45,6 +45,8 @@ void NodeModel::initializeResult([[maybe_unused]] bool success, interfaces::Bloc
     // TODO: Handle the `success` parameter,
     setBlockTipHeight(tip_info.block_height);
     setVerificationProgress(tip_info.verification_progress);
+
+    Q_EMIT setTimeRatioListInitial();
 }
 
 void NodeModel::startShutdownPolling()
@@ -75,6 +77,8 @@ void NodeModel::ConnectToBlockTipSignal()
             QMetaObject::invokeMethod(this, [=] {
                 setBlockTipHeight(tip.block_height);
                 setVerificationProgress(verification_progress);
+
+                Q_EMIT setTimeRatioList(tip.block_time);
             });
         });
 }
