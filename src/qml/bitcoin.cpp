@@ -6,6 +6,7 @@
 
 #include <chainparams.h>
 #include <init.h>
+#include <interfaces/chain.h>
 #include <interfaces/init.h>
 #include <interfaces/node.h>
 #include <logging.h>

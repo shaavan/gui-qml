@@ -4,6 +4,7 @@
 
 #include <qml/chainmodel.h>
 
+#include <interfaces/chain.h>
 #include <QDateTime>
 #include <QTime>
 #include <QThread>
@@ -24,7 +25,18 @@ void ChainModel::setTimeRatioList(int new_time)
 {
     int timeAtMeridian = timestampAtMeridian();
 
+    if(new_time < timeAtMeridian) {
+        return;
+    }
+
     m_time_ratio_list.push_back(double(new_time - timeAtMeridian) / SECS_IN_12_HOURS);
+
+    // for(int i=0; i < m_time_ratio_list.size(); i++) {
+    //     std::cout<<m_time_ratio_list[i].toDouble()<<" ";
+    // }
+    // std::cout<<"\n\n";
+
+    Q_EMIT timeRatioListChanged();
 }
 
 int ChainModel::timestampAtMeridian()
@@ -48,10 +60,24 @@ void ChainModel::setTimeRatioListInitial()
     m_time_ratio_list.clear();
     m_time_ratio_list.push_back(double(QDateTime::currentSecsSinceEpoch() - timeAtMeridian) / SECS_IN_12_HOURS);
 
+    // std::cout<<"Current Secs since epoch "<<QDateTime::currentSecsSinceEpoch()<<"\n"; // Working correctly
+    // std::cout<<"Time at meridian "<<timeAtMeridian<<"\n"; // Working correctly
+
+    // if(block.m_hash == nullptr) {
+    //     std::cout<<"Block Hash is null \n";
+    // }
+
+    // std::cout<<"Block hash "<<block.m_hash<<"\n";
+
     while (block.m_next_block != nullptr) {
         m_time_ratio_list.push_back(double(*block.m_time - timeAtMeridian) / SECS_IN_12_HOURS);
         block = *block.m_next_block;
     }
+
+    // for(int i=0; i < m_time_ratio_list.size(); i++) {
+    //     std::cout<<m_time_ratio_list[i].toDouble()<<" ";
+    // }
+    // std::cout<<"\n";
 
     Q_EMIT timeRatioListChanged();
 }
@@ -59,10 +85,15 @@ void ChainModel::setTimeRatioListInitial()
 void ChainModel::setCurrentTimeRatio()
 {
     int secsSinceMeridian = (QTime::currentTime().msecsSinceStartOfDay() / 1000) % SECS_IN_12_HOURS;
-    int currentTimeRatio = double(secsSinceMeridian) / SECS_IN_12_HOURS;
+    double currentTimeRatio = double(secsSinceMeridian) / SECS_IN_12_HOURS;
 
     if (currentTimeRatio < m_time_ratio_list[0].toDouble()) { //That means time has crossed a meridian
         m_time_ratio_list.erase(m_time_ratio_list.begin() + 1, m_time_ratio_list.end());
     }
     m_time_ratio_list[0] = currentTimeRatio;
+
+    // for(int i=0; i < m_time_ratio_list.size(); i++) {
+    //     std::cout<<m_time_ratio_list[i].toDouble()<<" ";
+    // }
+    // std::cout<<"\n\n";
 }
