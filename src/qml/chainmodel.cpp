@@ -29,12 +29,14 @@ void ChainModel::setTimeRatioList(int new_time)
         return;
     }
 
+    std::cout<<"Set Time Ratio List Initial function:\n";
+
     m_time_ratio_list.push_back(double(new_time - timeAtMeridian) / SECS_IN_12_HOURS);
 
-    // for(int i=0; i < m_time_ratio_list.size(); i++) {
-    //     std::cout<<m_time_ratio_list[i].toDouble()<<" ";
-    // }
-    // std::cout<<"\n\n";
+    for(int i=0; i < m_time_ratio_list.size(); i++) {
+        std::cout<<m_time_ratio_list[i].toDouble()<<" ";
+    }
+    std::cout<<"\n...................\n";
 
     Q_EMIT timeRatioListChanged();
 }
@@ -58,6 +60,8 @@ void ChainModel::setTimeRatioListInitial()
         return;
     }
 
+    std::cout<<"Set Time Ratio List Initial function:\n";
+
     m_time_ratio_list.clear();
     m_time_ratio_list.push_back(double(QDateTime::currentSecsSinceEpoch() - timeAtMeridian) / SECS_IN_12_HOURS);
 
@@ -71,6 +75,8 @@ void ChainModel::setTimeRatioListInitial()
     std::cout<<"\n";
 
     Q_EMIT timeRatioListChanged();
+
+    std::cout<<".....................\n\n";
 }
 
 void ChainModel::setCurrentTimeRatio()
