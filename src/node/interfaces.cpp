@@ -511,6 +511,13 @@ public:
         LOCK(::cs_main);
         return Assert(chainman().ActiveChain()[height])->GetBlockHash();
     }
+
+    int64_t getBlockTime(int height) override
+    {
+        LOCK(::cs_main);
+        return Assert(chainman().ActiveChain()[height])->GetBlockTime();
+    }
+
     bool haveBlockOnDisk(int height) override
     {
         LOCK(::cs_main);
