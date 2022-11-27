@@ -50,8 +50,26 @@ int ChainModel::timestampAtMeridian()
 void ChainModel::setTimeRatioListInitial()
 {
     int timeAtMeridian = timestampAtMeridian();
-    interfaces::FoundBlock block;
-    bool success = m_chain.findFirstBlockWithTimeAndHeight(/*min_time=*/timeAtMeridian, /*min_height=*/0, block);
+    // // int64_t time1;
+    // uint256 hash1;
+    // uint256 hash2;
+    // hash2.SetHex("00000008819873e925422c1ff0f99f7cc9bbb232af63a077a480a3633bee1ef6");
+    // // interfaces::FoundBlock block1;
+    // interfaces::FoundBlock block = interfaces::FoundBlock().hash(hash1);
+    // interfaces::FoundBlock block2 = block;
+    bool success = m_chain.findFirstBlockWithTimeAndHeight(/*min_time=*/0, /*min_height=*/0, block);
+
+    // bool success2 = m_chain.findBlock(hash2, block2);
+
+    // if(!success2) {
+    //     std::cout<<"There was a failure\n";
+    // }
+
+    // if(block2.m_time == nullptr) {
+    //     std::cout<<"The problem persists\n";
+    // }
+
+    // std::cout<<*block2.m_time<<"\n";
 
     if(!success) {
         return;
@@ -60,12 +78,18 @@ void ChainModel::setTimeRatioListInitial()
     m_time_ratio_list.clear();
     m_time_ratio_list.push_back(double(QDateTime::currentSecsSinceEpoch() - timeAtMeridian) / SECS_IN_12_HOURS);
 
+    auto height = m_chain.getHeight();
+
+    std::cout<<"Current Chain Height: "<<height.value()<<"\n";
+    // std::cout<<"Block Time is: "<<*block.m_time<<"\n";
+    std::cout<<"Block Hash is: "<<hash1.ToString()<<"\n";
+
     // std::cout<<"Current Secs since epoch "<<QDateTime::currentSecsSinceEpoch()<<"\n"; // Working correctly
     // std::cout<<"Time at meridian "<<timeAtMeridian<<"\n"; // Working correctly
 
-    // if(block.m_hash == nullptr) {
-    //     std::cout<<"Block Hash is null \n";
-    // }
+    if(block.m_next_block == nullptr) {
+        std::cout<<"Next Block is null \n";
+    }
 
     // std::cout<<"Block hash "<<block.m_hash<<"\n";
 
