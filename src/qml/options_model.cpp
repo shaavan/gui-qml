@@ -5,6 +5,7 @@
 #include <qml/options_model.h>
 
 #include <interfaces/node.h>
+#include <net.h>
 #include <qt/guiconstants.h>
 #include <qt/optionsmodel.h>
 #include <univalue.h>
@@ -20,7 +21,8 @@ OptionsQmlModel::OptionsQmlModel(interfaces::Node& node)
     m_prune = (prune_value > 1);
     m_prune_size_gb = m_prune ? PruneMiBtoGB(prune_value) : DEFAULT_PRUNE_TARGET_GB;
 
-    m_listen = SettingToBool(m_node.getPersistentSetting("listen"), 0);
+    m_listen = SettingToBool(m_node.getPersistentSetting("listen"), DEFAULT_LISTEN);
+    m_upnp = SettingToBool(m_node.getPersistentSetting("upnp"), 0);
 }
 
 void OptionsQmlModel::setPrune(bool new_prune)
@@ -53,5 +55,41 @@ void OptionsQmlModel::setListen(bool new_listen)
         m_listen = new_listen;
         m_node.updateRwSetting("listen", new_listen);
         Q_EMIT listenChanged(new_listen);
+    }
+}
+
+bool OptionsQmlModel::upnp() const 
+{
+#ifdef USE_UPNP
+    return m_upnp;
+#else
+    return false;
+}
+
+void OptionsQmlModel::setUpnp(bool new_upnp)
+{
+    if (m_upnp != new_upnp) {
+        m_upnp = new_upnp;
+        m_node.updateRwSetting("upnp", m_upnp);
+        m_node.mapPort(new_upnp, npmp());
+        Q_EMIT upnpChanged(new_upnp)
+    }
+}
+
+bool OptionsQmlModel::npnp() const
+{
+#ifdef USE_NATPMP
+    return m_npmp;
+#else
+    return false;
+}
+
+void OptionsQmlModel::setNpmp(bool new_npmp)
+{
+    if (m_npmp != new_npmp) {
+        m_npmp = new_npmp;
+        m_node.updateRwSetting("natpmp", m_npmp);
+        m_node.mapPort(upnp(), m_npmp)
+        Q_EMIT npmpChanged(new_npmp)
     }
 }

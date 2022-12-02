@@ -20,6 +20,8 @@ class OptionsQmlModel : public QObject
     Q_PROPERTY(bool listen READ listen WRITE setListen NOTIFY listenChanged)
     Q_PROPERTY(bool prune READ prune WRITE setPrune NOTIFY pruneChanged)
     Q_PROPERTY(int pruneSizeGB READ pruneSizeGB WRITE setPruneSizeGB NOTIFY pruneSizeGBChanged)
+    Q_PROPERTY(bool upnp READ upnp WRITE setUpnp NOTIFY upnpChanged)
+    Q_PROPERTY(bool npmp READ npmp WRITE setNpmp NOTIFY npmpChanged)
 
 public:
     explicit OptionsQmlModel(interfaces::Node& node);
@@ -30,11 +32,17 @@ public:
     void setPrune(bool new_prune);
     int pruneSizeGB() const { return m_prune_size_gb; }
     void setPruneSizeGB(int new_prune_size);
+    bool upnp() const;
+    void setUpnp(bool new_upnp);
+    bool npmp() const;
+    void setNpmp(bool new_npmp);
 
 Q_SIGNALS:
     void listenChanged(bool new_listen);
     void pruneChanged(bool new_prune);
     void pruneSizeGBChanged(int new_prune_size_gb);
+    void upnpChanged(bool upnp);
+    void npmpChanged(bool npmp);
 
 private:
     interfaces::Node& m_node;
@@ -43,6 +51,8 @@ private:
     bool m_prune;
     int m_prune_size_gb;
     bool m_listen;
+    bool m_upnp;
+    bool m_npmp;
 
     util::SettingsValue pruneSetting() const;
 };
