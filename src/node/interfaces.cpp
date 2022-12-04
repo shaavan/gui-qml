@@ -233,6 +233,18 @@ public:
         }
         return false;
     }
+
+    bool disconnectAllNodes() override
+    {
+        NodesStats stats;
+        getNodesStats(stats);
+
+        for (const auto& node_stat: stats) {
+            disconnectByAddress(std::get<0>(node_stat).addr);
+        }
+        return true;
+    }
+
     std::vector<std::unique_ptr<interfaces::ExternalSigner>> listExternalSigners() override
     {
 #ifdef ENABLE_EXTERNAL_SIGNER

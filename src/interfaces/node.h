@@ -144,6 +144,8 @@ public:
     //! Disconnect node by id.
     virtual bool disconnectById(NodeId id) = 0;
 
+    virtual bool disconnectAllNodes() = 0;
+
     //! Return list of external signers (attached devices which can sign transactions).
     virtual std::vector<std::unique_ptr<ExternalSigner>> listExternalSigners() = 0;
 
