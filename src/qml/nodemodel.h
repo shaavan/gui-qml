@@ -27,6 +27,7 @@ class NodeModel : public QObject
     Q_PROPERTY(int blockTipHeight READ blockTipHeight NOTIFY blockTipHeightChanged)
     Q_PROPERTY(int remainingSyncTime READ remainingSyncTime NOTIFY remainingSyncTimeChanged)
     Q_PROPERTY(double verificationProgress READ verificationProgress NOTIFY verificationProgressChanged)
+    Q_PROPERTY(bool pause READ pause WRITE setPause NOTIFY pauseChanged)
 
 public:
     explicit NodeModel(interfaces::Node& node);
@@ -37,6 +38,8 @@ public:
     void setRemainingSyncTime(double new_progress);
     double verificationProgress() const { return m_verification_progress; }
     void setVerificationProgress(double new_progress);
+    bool pause() const { return m_pause; }
+    void setPause(bool new_pause);
 
     Q_INVOKABLE void startNodeInitializionThread();
 
@@ -52,6 +55,7 @@ Q_SIGNALS:
     void requestedInitialize();
     void requestedShutdown();
     void verificationProgressChanged();
+    void pauseChanged(bool new_pause);
 
     void setTimeRatioList(int new_time);
     void setTimeRatioListInitial();
@@ -64,6 +68,7 @@ private:
     int m_block_tip_height{0};
     int m_remaining_sync_time{0};
     double m_verification_progress{0.0};
+    bool m_pause{false};
 
     int m_shutdown_polling_timer_id{0};
 
