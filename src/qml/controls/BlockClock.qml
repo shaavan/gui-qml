@@ -13,6 +13,7 @@ Item {
     property string header
     property string subText
     property bool synced
+    property bool pause
 
     property int size: 200
     property real arcBegin: 0
@@ -148,6 +149,13 @@ Item {
                     color: Theme.color.neutral9
                 }
             }
+        }
+    }
+
+    MouseArea {
+        anchors.fill: canvas
+        onClicked: {
+            pause ? nodeModel.pause = false : nodeModel.pause = true
         }
     }
 }
