@@ -88,9 +88,7 @@ void NodeModel::setPause(bool new_pause)
 {
     if(m_pause != new_pause) {
         m_pause = new_pause;
-        if(m_pause) {
-            m_node.disconnectAllNodes();
-        }
+        m_node.setNetworkActive(!new_pause);
         Q_EMIT pauseChanged(new_pause);
     }
 }
