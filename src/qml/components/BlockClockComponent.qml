@@ -8,10 +8,11 @@ BlockClock {
     anchors.centerIn: parent
     synced: nodeModel.verificationProgress > 0.999
     pause: nodeModel.pause
+    conns: nodeModel.nodeCount
 
     states: [
         State {
-            name: "connectingClock"; when: !synced && !pause
+            name: "connectingClock"; when: !synced && !pause && conns != 0
             PropertyChanges {
                 target: blockClock
 
@@ -22,7 +23,7 @@ BlockClock {
         },
 
         State {
-            name: "blockClock"; when: synced && !pause
+            name: "blockClock"; when: synced && !pause && conns != 0
             PropertyChanges {
                 target: blockClock
 
@@ -41,6 +42,18 @@ BlockClock {
                 ringProgress: 0
                 header: "Paused"
                 subText: "Tap to start"
+                blockList: {}
+            }
+        },
+
+        State {
+            name: "Connecting"; when: conns == 0 && !pause
+            PropertyChanges {
+                target: blockClock
+
+                ringProgress: 0
+                header: "Connecting"
+                subText: "Please Wait"
                 blockList: {}
             }
         }

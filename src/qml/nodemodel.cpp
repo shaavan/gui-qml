@@ -18,6 +18,7 @@ NodeModel::NodeModel(interfaces::Node& node)
     : m_node{node}
 {
     ConnectToBlockTipSignal();
+    ConnectToNumOfConnectionsSignal();
 }
 
 void NodeModel::setBlockTipHeight(int new_height)
@@ -83,6 +84,14 @@ void NodeModel::setPause(bool new_pause)
     }
 }
 
+void NodeModel::setNodeCount(int new_count)
+{
+    if (m_node_count != new_count) {
+        m_node_count = new_count;
+        Q_EMIT nodeCountChanged();
+    }
+}
+
 void NodeModel::startNodeInitializionThread()
 {
     Q_EMIT requestedInitialize();
@@ -127,6 +136,18 @@ void NodeModel::ConnectToBlockTipSignal()
                 setVerificationProgress(verification_progress);
 
                 Q_EMIT setTimeRatioList(tip.block_time);
+            });
+        });
+}
+
+void NodeModel::ConnectToNumOfConnectionsSignal()
+{
+    assert(!m_handler_notify_connections_changed);
+
+    m_handler_notify_connections_changed = m_node.handleNotifyNumConnectionsChanged(
+        [this](int new_num_connections) {
+            QMetaObject::invokeMethod(this, [=] {
+                setNodeCount(new_num_connections);
             });
         });
 }

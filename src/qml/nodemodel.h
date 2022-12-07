@@ -28,6 +28,7 @@ class NodeModel : public QObject
     Q_PROPERTY(int remainingSyncTime READ remainingSyncTime NOTIFY remainingSyncTimeChanged)
     Q_PROPERTY(double verificationProgress READ verificationProgress NOTIFY verificationProgressChanged)
     Q_PROPERTY(bool pause READ pause WRITE setPause NOTIFY pauseChanged)
+    Q_PROPERTY(int nodeCount READ nodeCount NOTIFY nodeCountChanged)
 
 public:
     explicit NodeModel(interfaces::Node& node);
@@ -40,6 +41,8 @@ public:
     void setVerificationProgress(double new_progress);
     bool pause() const { return m_pause; }
     void setPause(bool new_pause);
+    int nodeCount() const { return m_node_count; }
+    void setNodeCount(int new_count);
 
     Q_INVOKABLE void startNodeInitializionThread();
 
@@ -56,6 +59,7 @@ Q_SIGNALS:
     void requestedShutdown();
     void verificationProgressChanged();
     void pauseChanged(bool new_pause);
+    void nodeCountChanged();
 
     void setTimeRatioList(int new_time);
     void setTimeRatioListInitial();
@@ -69,6 +73,7 @@ private:
     int m_remaining_sync_time{0};
     double m_verification_progress{0.0};
     bool m_pause{false};
+    int m_node_count{0};
 
     int m_shutdown_polling_timer_id{0};
 
@@ -76,8 +81,10 @@ private:
 
     interfaces::Node& m_node;
     std::unique_ptr<interfaces::Handler> m_handler_notify_block_tip;
+    std::unique_ptr<interfaces::Handler> m_handler_notify_connections_changed;
 
     void ConnectToBlockTipSignal();
+    void ConnectToNumOfConnectionsSignal();
 };
 
 #endif // BITCOIN_QML_NODEMODEL_H
