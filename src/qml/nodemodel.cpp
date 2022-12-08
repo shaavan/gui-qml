@@ -6,7 +6,7 @@
 
 #include <interfaces/node.h>
 #include <net.h>
-#include <node/ui_interface.h>
+#include <node/interface_ui.h>
 #include <validation.h>
 
 #include <cassert>
