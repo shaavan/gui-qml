@@ -16,6 +16,7 @@ Item {
     property string subText
     property bool synced
     property bool pause
+    property bool conns
 
     property int size: 200
     property real arcBegin: 0
