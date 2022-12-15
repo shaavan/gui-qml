@@ -28,8 +28,8 @@ BlockClock {
                 target: blockClock
 
                 ringProgress: blockList[0]
-                header: nodeModel.blockTipHeight
-                subText: "Latest Block"
+                header: Math.floor(nodeModel.blockTipHeight / 1000) + "," + nodeModel.blockTipHeight % 1000
+                subText: "Blocktime"
                 blockList: chainModel.timeRatioList
             }
         },

@@ -128,9 +128,9 @@ Item {
         Image {
             Layout.alignment: Qt.AlignCenter
             source: "image://images/bitcoin-circle"
-            sourceSize.width: 30
-            sourceSize.height: 30
-            Layout.bottomMargin: 15
+            sourceSize.width: 40
+            sourceSize.height: 40
+            Layout.bottomMargin: 7
             ColorOverlay {
                 anchors.fill: parent
                 source: parent
@@ -143,10 +143,10 @@ Item {
             headerSize: 32
             headerBold: true
             description: root.subText
-            descriptionMargin: 0
+            descriptionMargin: 2
             descriptionColor: Theme.color.neutral4
             descriptionBold: true
-            Layout.bottomMargin: 20
+            Layout.bottomMargin: 14
         }
         PeersIndicator {
             Layout.alignment: Qt.AlignCenter
