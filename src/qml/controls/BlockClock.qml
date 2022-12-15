@@ -1,6 +1,7 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.15
+import QtGraphicalEffects 1.0
 
 import "../components"
 
@@ -126,10 +127,15 @@ Item {
         anchors.centerIn: root
         Image {
             Layout.alignment: Qt.AlignCenter
-            source: "image://images/app"
+            source: "image://images/bitcoin-circle"
             sourceSize.width: 30
             sourceSize.height: 30
             Layout.bottomMargin: 15
+            ColorOverlay {
+                anchors.fill: parent
+                source: parent
+                color: Theme.color.neutral9
+            }
         }
         Header {
             Layout.fillWidth: true
@@ -151,7 +157,7 @@ Item {
     MouseArea {
         anchors.fill: canvas
         onClicked: {
-            pause ? nodeModel.pause = false : nodeModel.pause = true
+            nodeModel.pause = !pause
         }
     }
 }
