@@ -41,6 +41,7 @@ BlockClock {
 
                 ringProgress: 0
                 header: "Paused"
+                headerSize: 24
                 subText: "Tap to start"
                 blockList: {}
             }
@@ -53,6 +54,7 @@ BlockClock {
 
                 ringProgress: 0
                 header: "Connecting"
+                headerSize: 24
                 subText: "Please Wait"
                 blockList: {}
             }

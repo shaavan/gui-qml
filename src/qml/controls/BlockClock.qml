@@ -19,6 +19,8 @@ Item {
     property bool pause
     property bool conns
 
+    property int headerSize: 32
+
     property int size: 200
     property real arcBegin: 0
     property real arcEnd: ringProgress * 360
@@ -140,7 +142,7 @@ Item {
         Header {
             Layout.fillWidth: true
             header: root.header
-            headerSize: 32
+            headerSize: root.headerSize
             headerBold: true
             description: root.subText
             descriptionMargin: 2
