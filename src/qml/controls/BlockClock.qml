@@ -141,10 +141,11 @@ Item {
             Layout.fillWidth: true
             header: root.header
             headerSize: 32
-            bold: true
+            headerBold: true
             description: root.subText
             descriptionMargin: 0
             descriptionColor: Theme.color.neutral4
+            descriptionBold: true
             Layout.bottomMargin: 20
         }
         PeersIndicator {
