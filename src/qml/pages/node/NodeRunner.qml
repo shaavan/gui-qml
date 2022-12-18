@@ -15,12 +15,8 @@ Page {
     header: NavigationBar {
         id: navbar
     }
-    ColumnLayout {
-        spacing: 0
-        anchors.fill: parent
 
-        Component.onCompleted: nodeModel.startNodeInitializionThread();
+    Component.onCompleted: nodeModel.startNodeInitializionThread();
 
-        BlockClockComponent{}
-    }
+    BlockClockComponent{}
 }
